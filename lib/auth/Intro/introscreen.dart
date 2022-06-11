@@ -83,11 +83,14 @@ class _IntroScreenState extends State<IntroScreen> {
                 height: 505,
                 width: 339,
                 child: Neumorphic(
-                  style: const NeumorphicStyle(
+                  style: NeumorphicStyle(
                       shape: NeumorphicShape.concave,
-                      lightSource: LightSource.topLeft,
-                      shadowLightColor: Color(0xffFAF9F9),
-                      color: Color(0xffE5E5E5)),
+                      boxShape: NeumorphicBoxShape.roundRect(
+                          BorderRadius.circular(12)),
+                      // lightSource: LightSource.topLeft,
+                      intensity: 12,
+                      shadowLightColor: const Color(0xffFAF9F9),
+                      color: const Color(0xffE5E5E5)),
                   child: PageView.builder(
                       controller: pageController,
                       itemCount: contents.length,
@@ -169,8 +172,9 @@ class _IntroScreenState extends State<IntroScreen> {
                                                         BorderRadius.circular(
                                                             300)),
                                                 // depth: 8,
-                                                lightSource:
-                                                    LightSource.topLeft,
+                                                intensity: 12,
+                                                depth: NeumorphicTheme.depth(
+                                                    context),
                                                 color: Color(0xffE5E5E5)),
                                             child: const Align(
                                               alignment: Alignment.center,
