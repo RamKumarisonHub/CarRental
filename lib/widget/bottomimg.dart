@@ -2,9 +2,8 @@ import 'package:car_rental/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget bottamImg() {
-  return Positioned(
-      bottom: 0,
-      left: 0,
+  return Align(
+    alignment: Alignment.bottomLeft,
       child: Row(
         children: [
           ShaderMask(

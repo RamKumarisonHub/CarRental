@@ -1,3 +1,4 @@
+import 'package:car_rental/Dashboard/dashboard.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/bottomimg.dart';
 import 'package:car_rental/widget/gettitle.dart';
@@ -17,6 +18,7 @@ class _ResetpasswordState extends State<Resetpassword> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: width,
         color: backgroundcolor,
@@ -24,8 +26,8 @@ class _ResetpasswordState extends State<Resetpassword> {
           children: [
             bottamImg(),
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 30, bottom: 23, left: 18, right: 18),
+              padding:  EdgeInsets.only(
+                  top: 195, left: 18, right: 18, bottom:MediaQuery.of(context).viewInsets.bottom+ 23,),
               child: Align(
                 alignment: Alignment.center,
                 child: SingleChildScrollView(
@@ -67,10 +69,12 @@ class _ResetpasswordState extends State<Resetpassword> {
       style: NeumorphicStyle(
           shape: NeumorphicShape.concave,
           lightSource: LightSource.topLeft,
+          shadowDarkColor: Color(0xffFE5E5E5),
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-          intensity: 12,
+          intensity: 1,
           shadowLightColor: const Color(0xffFAF9F9),
-          color: neumorphicColor),
+          color: neumorphicColor
+      ),
       child: Padding(
         padding:
             const EdgeInsets.only(top: 24, left: 24, right: 25, bottom: 34),
@@ -79,11 +83,11 @@ class _ResetpasswordState extends State<Resetpassword> {
           children: [
             Container(
                 alignment: Alignment.center,
-                child: getTtile('Reset Password', 16)),
+                child: getTtile('Reset Password', 16,FontWeight.w500)),
             const SizedBox(
               height: 31,
             ),
-            getTtile('New Password', 14),
+            getTtile('New Password', 14,FontWeight.w500),
             const SizedBox(
               height: 11,
             ),
@@ -94,7 +98,7 @@ class _ResetpasswordState extends State<Resetpassword> {
                   color: neumorphicColor,
                   boxShape:
                       NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-                  intensity: 12,
+                  intensity: 1,
                   depth: NeumorphicTheme.embossDepth(context)),
               padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
               child: TextFormField(
@@ -107,7 +111,7 @@ class _ResetpasswordState extends State<Resetpassword> {
             const SizedBox(
               height: 23,
             ),
-            getTtile('Confirm Password', 14),
+            getTtile('Confirm Password', 14,FontWeight.w500),
             const SizedBox(
               height: 11,
             ),
@@ -120,16 +124,17 @@ class _ResetpasswordState extends State<Resetpassword> {
                     color: neumorphicColor,
                     boxShape:
                         NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-                    // intensity: 30,
+                    intensity: 1,
                     depth: NeumorphicTheme.depth(context)),
                 padding:
                     const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
                 child: TextFormField(
+
                   obscureText: true,
                   obscuringCharacter: 'x',
                   cursorColor: Colors.black,
                   style: const TextStyle(
-                      color: Color(0xffB8B8B8),
+                      color: black,
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
                       letterSpacing: 8),
@@ -148,19 +153,24 @@ class _ResetpasswordState extends State<Resetpassword> {
             const SizedBox(
               height: 38,
             ),
-            Container(
-              height: 55,
-              width: width,
-              child: Neumorphic(
-                style: NeumorphicStyle(
-                    color: neumorphicColor,
-                    boxShape:
-                        NeumorphicBoxShape.roundRect(BorderRadius.circular(27)),
-                    intensity: 12,
-                    depth: NeumorphicTheme.depth(context)),
-                child: Align(
-                    alignment: Alignment.center,
-                    child: getTtile('Set Password', 14)),
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> Dashboard()));
+              },
+              child: Container(
+                height: 55,
+                width: width,
+                child: Neumorphic(
+                  style: NeumorphicStyle(
+                      color: neumorphicColor,
+                      boxShape:
+                          NeumorphicBoxShape.roundRect(BorderRadius.circular(27)),
+                      intensity: 12,
+                      depth: NeumorphicTheme.depth(context)),
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: getTtile('Set Password', 14,FontWeight.w500)),
+                ),
               ),
             ),
           ],

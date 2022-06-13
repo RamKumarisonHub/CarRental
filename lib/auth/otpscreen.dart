@@ -15,12 +15,15 @@ class OTPScreen extends StatefulWidget {
 }
 
 class _OTPScreenState extends State<OTPScreen> {
+
+  final TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: width,
         color: backgroundcolor,
@@ -28,8 +31,8 @@ class _OTPScreenState extends State<OTPScreen> {
           children: [
             bottamImg(),
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 30, bottom: 23, left: 18, right: 18),
+              padding:  EdgeInsets.only(
+                  top: 120, left: 18, right: 18,bottom:23,),
               child: Align(
                 alignment: Alignment.center,
                 child: SingleChildScrollView(
@@ -74,7 +77,7 @@ class _OTPScreenState extends State<OTPScreen> {
             shape: NeumorphicShape.concave,
             lightSource: LightSource.topLeft,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-            intensity: 12,
+            intensity: 1,
             shadowLightColor: const Color(0xffFAF9F9),
             color: neumorphicColor),
         child: Padding(
@@ -85,38 +88,52 @@ class _OTPScreenState extends State<OTPScreen> {
             children: [
               Align(
                 alignment: Alignment.center,
-                child: getTtile('Verification Code', 16),
+                child: getTtile('Verification Code', 16,FontWeight.w500),
               ),
               const SizedBox(
                 height: 31,
               ),
-              getTtile('Enter OTP', 14),
+              getTtile('Enter OTP', 14,FontWeight.w500),
               const SizedBox(
                 height: 11,
               ),
               PinCodeTextField(
-                // controller: otpController,
+                animationType: AnimationType.fade,
+                controller: otpController,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-
+          cursorColor: black,
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
-                  // borderRadius: BorderRadius.circular(25),
-                  activeColor: Colors.black,
-                  disabledColor: Colors.black,
-                  selectedColor: Colors.black,
-                  inactiveColor: Colors.black,
-                  fieldHeight: 50,
-                  fieldWidth: 40,
-                  activeFillColor: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  activeColor: neumorphicColor,
+                  disabledColor: neumorphicColor,
+                  selectedColor: neumorphicColor,
+                  inactiveColor: neumorphicColor,
+                  fieldHeight: 55,
+                  fieldWidth: 61.49,
+                  activeFillColor: black,
                 ),
 
                 length: 4,
                 appContext: context,
                 keyboardType: TextInputType.number,
-                pastedTextStyle: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+
+                boxShadows: const[
+                  BoxShadow(
+                    // spreadRadius: 0.8,
+                    color: Color(0xffFAF9F9),offset: Offset(-23, -23),
+                      blurRadius: 40
+                  ),
+                  BoxShadow(
+                    spreadRadius: 0.8,
+                      color: Color(0xffD9D5D5),offset: Offset(23, 23),
+                      blurRadius: 30
+                  )
+                ],
+                // pastedTextStyle: const TextStyle(
+                //   color: Colors.black,
+                //   fontWeight: FontWeight.bold,
+                // ),
                 onChanged: (val) {},
                 onCompleted: (result) {
                   if (result != null) {
@@ -151,7 +168,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Verify', 14)),
+                        child: getTtile('Verify', 14,FontWeight.w500)),
                   ),
                 ),
               ),

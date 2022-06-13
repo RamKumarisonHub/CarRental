@@ -1,4 +1,5 @@
 import 'package:car_rental/auth/otherecoverymethod.dart';
+import 'package:car_rental/support/supporteam.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/bottomimg.dart';
 import 'package:car_rental/widget/gettitle.dart';
@@ -18,6 +19,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
           width: width,
           color: backgroundcolor,
@@ -25,8 +27,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             children: [
               bottamImg(),
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 165, bottom: 23, left: 18, right: 18),
+                padding:const  EdgeInsets.only(
+                    top: 165, left: 18, right: 18, bottom: 23,),
                 child: Align(
                   alignment: Alignment.center,
                   child: SingleChildScrollView(
@@ -70,9 +72,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             shape: NeumorphicShape.concave,
             lightSource: LightSource.topLeft,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-            intensity: 12,
+            intensity: 1,
             shadowLightColor: const Color(0xffFAF9F9),
-            color: neumorphicColor),
+            color: neumorphicColor
+            ),
         child: Padding(
           padding:
               const EdgeInsets.only(top: 31, left: 24, right: 25, bottom: 54),
@@ -81,12 +84,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             children: [
               Container(
                 alignment: Alignment.center,
-                child: getTtile('Forgot Password',16),
+                child: getTtile('Forgot Password', 16,FontWeight.w500),
               ),
               const SizedBox(
                 height: 31,
               ),
-              getTtile('Email',14),
+              getTtile('Email', 14,FontWeight.w500),
               const SizedBox(
                 height: 11,
               ),
@@ -97,7 +100,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     color: neumorphicColor,
                     boxShape:
                         NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-                    intensity: 12,
+                    intensity: 1,
                     depth: NeumorphicTheme.embossDepth(context)),
                 padding:
                     const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
@@ -122,7 +125,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       intensity: 12,
                       depth: NeumorphicTheme.depth(context)),
                   child: Align(
-                      alignment: Alignment.center, child: getTtile('Submit',14)),
+                      alignment: Alignment.center,
+                      child: getTtile('Submit', 14,FontWeight.w500)),
                 ),
               ),
               const SizedBox(
@@ -137,13 +141,20 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             MaterialPageRoute(
                                 builder: (context) => OtherecoveryMethod()));
                       },
-                      child: getTtile('Other recovery methods',14))),
+                      child: getTtile('Other recovery methods', 14,FontWeight.w500))),
               const SizedBox(
                 height: 18,
               ),
               Align(
                   alignment: Alignment.center,
-                  child: getTtile('Reach out to support',14)),
+                  child: InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => SupportTeam()));
+                      },
+                      child: getTtile('Reach out to support', 14,FontWeight.w500))),
             ],
           ),
         ),

@@ -21,6 +21,7 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: width,
         color: backgroundcolor,
@@ -29,7 +30,7 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
             bottamImg(),
             Padding(
               padding: const EdgeInsets.only(
-                  top: 20, bottom: 23, left: 18, right: 18),
+                  top: 187,  left: 18, right: 18,bottom: 23,),
               child: Align(
                 alignment: Alignment.center,
                 child: SingleChildScrollView(
@@ -74,7 +75,7 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
             shape: NeumorphicShape.concave,
             lightSource: LightSource.topLeft,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-            intensity: 12,
+            intensity: 1,
             shadowLightColor: const Color(0xffFAF9F9),
             color: neumorphicColor),
         child: Padding(
@@ -85,18 +86,18 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
             children: [
               Container(
                 alignment: Alignment.center,
-                child: getTtile('Other recovery methods', 16),
+                child: getTtile('Other recovery methods', 16,FontWeight.w500),
               ),
               const SizedBox(
                 height: 14,
               ),
               Align(
                   alignment: Alignment.center,
-                  child: getTtile('Password Recovery', 16)),
+                  child: getTtile('Password Recovery', 16,FontWeight.w500)),
               const SizedBox(
                 height: 50,
               ),
-              getTtile('Use Phone Number', 14),
+              getTtile('Use Phone Number', 14,FontWeight.w500),
               const SizedBox(
                 height: 11,
               ),
@@ -107,7 +108,7 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
                     color: neumorphicColor,
                     boxShape:
                         NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-                    intensity: 12,
+                    intensity: 1,
                     depth: NeumorphicTheme.embossDepth(context)),
                 padding:
                     const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
@@ -151,7 +152,7 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Send OTP', 14)),
+                        child: getTtile('Send OTP', 14,FontWeight.w500)),
                   ),
                 ),
               ),

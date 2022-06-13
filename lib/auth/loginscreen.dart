@@ -2,7 +2,6 @@ import 'package:car_rental/auth/forgetpassword.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/bottomimg.dart';
 import 'package:car_rental/widget/gettitle.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,6 +17,8 @@ class _LoginScreenState extends State<LoginScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: height,
         width: width,
@@ -26,11 +27,11 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             bottamImg(),
             Padding(
-              padding: const EdgeInsets.only(
+              padding:const  EdgeInsets.only(
                   top: 51, left: 18, right: 18, bottom: 33),
               child: SingleChildScrollView(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Image.asset(
                       'assets/images/logo.png',
@@ -78,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 18,
                     ),
-                    typesofLogin(width)
+                    typesofLogin(width),
                   ],
                 ),
               ),
@@ -97,9 +98,10 @@ class _LoginScreenState extends State<LoginScreen> {
             shape: NeumorphicShape.concave,
             lightSource: LightSource.topLeft,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-            intensity: 12,
-            shadowLightColor: const Color(0xffFAF9F9),
-            color: neumorphicColor),
+            intensity: 1,
+            // shadowLightColor: const Color(0xffFAF9F9),
+            color: neumorphicColor
+        ),
         child: Padding(
           padding:
               const EdgeInsets.only(top: 24, left: 24, right: 25, bottom: 24),
@@ -107,11 +109,11 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  alignment: Alignment.center, child: getTtile('Log In', 16)),
+                  alignment: Alignment.center, child: getTtile('Log In', 16,FontWeight.w500)),
               const SizedBox(
                 height: 31,
               ),
-              getTtile('Email/Phone Number', 14),
+              getTtile('Email/Phone Number', 14,FontWeight.w500),
               const SizedBox(
                 height: 11,
               ),
@@ -127,6 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
                 child: TextFormField(
+                  autofocus: false,
                   cursorColor: Colors.black,
                   style: const TextStyle(
                       fontSize: 12, color: black, fontWeight: FontWeight.w500),
@@ -136,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 23,
               ),
-              getTtile('Password', 14),
+              getTtile('Password', 14,FontWeight.w500),
               const SizedBox(
                 height: 11,
               ),
@@ -158,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscuringCharacter: 'x',
                     cursorColor: Colors.black,
                     style: const TextStyle(
-                        color: Color(0xffB8B8B8),
+                        color: black,
                         fontWeight: FontWeight.w500,
                         fontSize: 12,
                         letterSpacing: 8),
@@ -178,14 +181,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     builder: (context) => ForgetPassword()));
                           },
                           child: Container(
-                            margin: const EdgeInsets.only(top: 6, bottom: 8),
+                            margin: const EdgeInsets.only(top: 2, bottom: 6,right: 0),
                             width: 41,
                             height: 41,
                             child: Neumorphic(
                                 style: NeumorphicStyle(
                                     boxShape: NeumorphicBoxShape.roundRect(
                                         BorderRadius.circular(7)),
-                                    color: Color(0xffDDDCDC)),
+                                    color:const Color(0xffDDDCDC)),
                                 child: const Align(
                                   alignment: Alignment.center,
                                   child: Text(
@@ -216,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       depth: NeumorphicTheme.depth(context)),
                   child: Align(
                       alignment: Alignment.center,
-                      child: getTtile('Log In', 14)),
+                      child: getTtile('Log In', 14,FontWeight.w500)),
                 ),
               ),
               const SizedBox(
@@ -254,9 +257,9 @@ class _LoginScreenState extends State<LoginScreen> {
               shape: NeumorphicShape.concave,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
               // lightSource: LightSource.topLeft,
-              intensity: 12,
-              shadowLightColor: const Color(0xffFAF9F9),
-              color: neumorphicColor),
+              intensity: 1,
+              color: neumorphicColor
+          ),
           child: Padding(
             padding: const EdgeInsets.only(top: 21, bottom: 19),
             child: Column(

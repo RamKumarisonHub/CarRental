@@ -36,9 +36,8 @@ class _IntroScreenState extends State<IntroScreen> {
         height: height,
         width: width,
         decoration: const BoxDecoration(
-          color: backgroundcolor,
-          // borderRadius: BorderRadius.circular(20)
-        ),
+            color: backgroundcolor,
+            ),
         child: Stack(
           children: [
             Positioned(
@@ -87,10 +86,10 @@ class _IntroScreenState extends State<IntroScreen> {
                       shape: NeumorphicShape.concave,
                       boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(12)),
-                      // lightSource: LightSource.topLeft,
                       intensity: 12,
                       shadowLightColor: const Color(0xffFAF9F9),
-                      color: const Color(0xffE5E5E5)),
+                      color: neumorphicColor
+                  ),
                   child: PageView.builder(
                       controller: pageController,
                       itemCount: contents.length,
@@ -175,7 +174,8 @@ class _IntroScreenState extends State<IntroScreen> {
                                                 intensity: 12,
                                                 depth: NeumorphicTheme.depth(
                                                     context),
-                                                color: Color(0xffE5E5E5)),
+                                                color: neumorphicColor
+                                            ),
                                             child: const Align(
                                               alignment: Alignment.center,
                                               child: Text(

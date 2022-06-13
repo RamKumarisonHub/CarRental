@@ -1,3 +1,4 @@
+import 'package:car_rental/Dashboard/dashboard.dart';
 import 'package:car_rental/auth/Intro/introscreen.dart';
 import 'package:car_rental/auth/splashscreen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Car Rental',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
