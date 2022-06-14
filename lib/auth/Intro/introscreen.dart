@@ -36,9 +36,8 @@ class _IntroScreenState extends State<IntroScreen> {
         height: height,
         width: width,
         decoration: const BoxDecoration(
-          color: backgroundcolor,
-          // borderRadius: BorderRadius.circular(20)
-        ),
+            color: backgroundcolor,
+            ),
         child: Stack(
           children: [
             Positioned(
@@ -83,11 +82,14 @@ class _IntroScreenState extends State<IntroScreen> {
                 height: 505,
                 width: 339,
                 child: Neumorphic(
-                  style: const NeumorphicStyle(
+                  style: NeumorphicStyle(
                       shape: NeumorphicShape.concave,
-                      lightSource: LightSource.topLeft,
-                      shadowLightColor: Color(0xffFAF9F9),
-                      color: Color(0xffE5E5E5)),
+                      boxShape: NeumorphicBoxShape.roundRect(
+                          BorderRadius.circular(12)),
+                      intensity: 12,
+                      shadowLightColor: const Color(0xffFAF9F9),
+                      color: neumorphicColor
+                  ),
                   child: PageView.builder(
                       controller: pageController,
                       itemCount: contents.length,
@@ -169,9 +171,11 @@ class _IntroScreenState extends State<IntroScreen> {
                                                         BorderRadius.circular(
                                                             300)),
                                                 // depth: 8,
-                                                lightSource:
-                                                    LightSource.topLeft,
-                                                color: Color(0xffE5E5E5)),
+                                                intensity: 12,
+                                                depth: NeumorphicTheme.depth(
+                                                    context),
+                                                color: neumorphicColor
+                                            ),
                                             child: const Align(
                                               alignment: Alignment.center,
                                               child: Text(
