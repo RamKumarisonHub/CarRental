@@ -1,6 +1,7 @@
 import 'package:car_rental/Dashboard/dashboard.dart';
-import 'package:car_rental/auth/Intro/introscreen.dart';
-import 'package:car_rental/auth/splashscreen.dart';
+import 'package:car_rental/Signup/moredetails.dart';
+import 'package:car_rental/Signup/signup.dart';
+import 'package:car_rental/login/splashscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

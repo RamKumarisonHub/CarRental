@@ -1,5 +1,5 @@
-import 'package:car_rental/auth/Intro/contentmodal.dart';
-import 'package:car_rental/auth/loginscreen.dart';
+import 'package:car_rental/login/Intro/contentmodal.dart';
+import 'package:car_rental/login/signIn.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -36,8 +36,8 @@ class _IntroScreenState extends State<IntroScreen> {
         height: height,
         width: width,
         decoration: const BoxDecoration(
-            color: backgroundcolor,
-            ),
+          color: backgroundcolor,
+        ),
         child: Stack(
           children: [
             Positioned(
@@ -88,8 +88,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           BorderRadius.circular(12)),
                       intensity: 12,
                       shadowLightColor: const Color(0xffFAF9F9),
-                      color: neumorphicColor
-                  ),
+                      color: neumorphicColor),
                   child: PageView.builder(
                       controller: pageController,
                       itemCount: contents.length,
@@ -157,7 +156,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    LoginScreen()));
+                                                    SignIn()));
                                       },
                                       child: Container(
                                         width: 94,
@@ -174,8 +173,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                                 intensity: 12,
                                                 depth: NeumorphicTheme.depth(
                                                     context),
-                                                color: neumorphicColor
-                                            ),
+                                                color: neumorphicColor),
                                             child: const Align(
                                               alignment: Alignment.center,
                                               child: Text(

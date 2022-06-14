@@ -1,4 +1,4 @@
-import 'package:car_rental/auth/resetpassword.dart';
+import 'package:car_rental/login/resetpassword.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/bottomimg.dart';
 import 'package:car_rental/widget/gettitle.dart';
@@ -15,7 +15,6 @@ class OTPScreen extends StatefulWidget {
 }
 
 class _OTPScreenState extends State<OTPScreen> {
-
   final TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,12 @@ class _OTPScreenState extends State<OTPScreen> {
           children: [
             bottamImg(),
             Padding(
-              padding:  EdgeInsets.only(
-                  top: 120, left: 18, right: 18,bottom:23,),
+              padding: EdgeInsets.only(
+                top: 120,
+                left: 18,
+                right: 18,
+                bottom: 23,
+              ),
               child: Align(
                 alignment: Alignment.center,
                 child: SingleChildScrollView(
@@ -88,12 +91,12 @@ class _OTPScreenState extends State<OTPScreen> {
             children: [
               Align(
                 alignment: Alignment.center,
-                child: getTtile('Verification Code', 16,FontWeight.w500),
+                child: getTtile('Verification Code', 16, FontWeight.w500),
               ),
               const SizedBox(
                 height: 31,
               ),
-              getTtile('Enter OTP', 14,FontWeight.w500),
+              getTtile('Enter OTP', 14, FontWeight.w500),
               const SizedBox(
                 height: 11,
               ),
@@ -101,7 +104,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 animationType: AnimationType.fade,
                 controller: otpController,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          cursorColor: black,
+                cursorColor: black,
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
                   borderRadius: BorderRadius.circular(15),
@@ -118,17 +121,17 @@ class _OTPScreenState extends State<OTPScreen> {
                 appContext: context,
                 keyboardType: TextInputType.number,
 
-                boxShadows: const[
+                boxShadows: const [
                   BoxShadow(
-                    // spreadRadius: 0.8,
-                    color: Color(0xffFAF9F9),offset: Offset(-23, -23),
-                      blurRadius: 40
-                  ),
+                      // spreadRadius: 0.8,
+                      color: Color(0xffFAF9F9),
+                      offset: Offset(-23, -23),
+                      blurRadius: 40),
                   BoxShadow(
-                    spreadRadius: 0.8,
-                      color: Color(0xffD9D5D5),offset: Offset(23, 23),
-                      blurRadius: 30
-                  )
+                      spreadRadius: 0.8,
+                      color: Color(0xffD9D5D5),
+                      offset: Offset(23, 23),
+                      blurRadius: 30)
                 ],
                 // pastedTextStyle: const TextStyle(
                 //   color: Colors.black,
@@ -168,7 +171,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Verify', 14,FontWeight.w500)),
+                        child: getTtile('Verify', 14, FontWeight.w500)),
                   ),
                 ),
               ),

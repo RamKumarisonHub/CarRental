@@ -1,4 +1,4 @@
-import 'package:car_rental/auth/Intro/introscreen.dart';
+import 'package:car_rental/login/Intro/introscreen.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:flutter/material.dart';
 

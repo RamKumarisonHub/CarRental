@@ -1,25 +1,27 @@
-import 'package:car_rental/auth/otpscreen.dart';
+import 'package:car_rental/Signup/moredetails.dart';
+import 'package:car_rental/login/resetpassword.dart';
 import 'package:car_rental/utils/constants.dart';
+import 'package:car_rental/widget/bottomimg.dart';
 import 'package:car_rental/widget/gettitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../widget/bottomimg.dart';
-
-class OtherecoveryMethod extends StatefulWidget {
-  const OtherecoveryMethod({Key? key}) : super(key: key);
+class SignupOTP extends StatefulWidget {
+  const SignupOTP({Key? key}) : super(key: key);
 
   @override
-  State<OtherecoveryMethod> createState() => _OtherecoveryMethodState();
+  State<SignupOTP> createState() => _SignupOTPState();
 }
 
-class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
-  final TextEditingController phoneController = TextEditingController();
+class _SignupOTPState extends State<SignupOTP> {
+  final TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -29,8 +31,12 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
           children: [
             bottamImg(),
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 187,  left: 18, right: 18,bottom: 23,),
+              padding: EdgeInsets.only(
+                top: 120,
+                left: 18,
+                right: 18,
+                bottom: 23,
+              ),
               child: Align(
                 alignment: Alignment.center,
                 child: SingleChildScrollView(
@@ -53,9 +59,10 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
                             color: black),
                       ),
                       const SizedBox(
-                        height: 138,
+                        height: 209,
                       ),
-                      otheRecoveryWidget(width)
+                      verificationcodeWidget(width)
+                      // otheRecoveryWidget(width)
                     ],
                   ),
                 ),
@@ -67,9 +74,8 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
     );
   }
 
-  Widget otheRecoveryWidget(double width) {
+  Widget verificationcodeWidget(double width) {
     return Container(
-      width: width,
       child: Neumorphic(
         style: NeumorphicStyle(
             shape: NeumorphicShape.concave,
@@ -80,65 +86,79 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
             color: neumorphicColor),
         child: Padding(
           padding:
-              const EdgeInsets.only(top: 26, left: 24, right: 25, bottom: 34),
+              const EdgeInsets.only(top: 24, left: 24, right: 25, bottom: 34),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                alignment: Alignment.center,
-                child: getTtile('Other recovery methods', 16,FontWeight.w500),
-              ),
-              const SizedBox(
-                height: 14,
-              ),
               Align(
-                  alignment: Alignment.center,
-                  child: getTtile('Password Recovery', 16,FontWeight.w500)),
-              const SizedBox(
-                height: 50,
+                alignment: Alignment.center,
+                child: getTtile('Verification Code', 16, FontWeight.w500),
               ),
-              getTtile('Use Phone Number', 14,FontWeight.w500),
+              const SizedBox(
+                height: 31,
+              ),
+              getTtile('Enter OTP', 14, FontWeight.w500),
               const SizedBox(
                 height: 11,
               ),
-              Neumorphic(
-                margin:
-                    const EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                style: NeumorphicStyle(
-                    color: neumorphicColor,
-                    boxShape:
-                        NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-                    intensity: 1,
-                    depth: NeumorphicTheme.embossDepth(context)),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
-                child: TextFormField(
-                  controller: phoneController,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  keyboardType: TextInputType.number,
-                  cursorColor: Colors.black,
-                  style: const TextStyle(
-                      fontSize: 12, color: black, fontWeight: FontWeight.w500),
-                  decoration: const InputDecoration(border: InputBorder.none),
+              PinCodeTextField(
+                animationType: AnimationType.fade,
+                controller: otpController,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                cursorColor: black,
+                pinTheme: PinTheme(
+                  shape: PinCodeFieldShape.box,
+                  borderRadius: BorderRadius.circular(15),
+                  activeColor: neumorphicColor,
+                  disabledColor: neumorphicColor,
+                  selectedColor: neumorphicColor,
+                  inactiveColor: neumorphicColor,
+                  fieldHeight: 55,
+                  fieldWidth: 61.49,
+                  activeFillColor: black,
                 ),
+
+                length: 4,
+                appContext: context,
+                keyboardType: TextInputType.number,
+
+                boxShadows: const [
+                  BoxShadow(
+                      // spreadRadius: 0.8,
+                      color: Color(0xffFAF9F9),
+                      offset: Offset(-23, -23),
+                      blurRadius: 40),
+                  BoxShadow(
+                      spreadRadius: 0.8,
+                      color: Color(0xffD9D5D5),
+                      offset: Offset(23, 23),
+                      blurRadius: 30)
+                ],
+                // pastedTextStyle: const TextStyle(
+                //   color: Colors.black,
+                //   fontWeight: FontWeight.bold,
+                // ),
+                onChanged: (val) {},
+                onCompleted: (result) {
+                  if (result != null) {
+                    // _callAccessPin(result);
+                    // Verify(loginViewModal);
+                  }
+
+                  // Your logic with code
+                  print(result);
+                  //pin=result;
+
+                  print(result);
+                },
               ),
               const SizedBox(
-                height: 27,
-              ),
-              const Text(
-                "Didn’t remember number",
-                style: TextStyle(
-                    color: Color(0xffDD3155),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500),
-              ),
-              const SizedBox(
-                height: 41,
+                height: 38,
               ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OTPScreen()));
+                      MaterialPageRoute(builder: (context) => MoreDetails()));
                 },
                 child: Container(
                   height: 55,
@@ -152,7 +172,7 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Send OTP', 14,FontWeight.w500)),
+                        child: getTtile('Verify', 14, FontWeight.w500)),
                   ),
                 ),
               ),
