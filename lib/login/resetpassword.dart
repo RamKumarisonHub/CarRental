@@ -19,7 +19,7 @@ class _ResetpasswordState extends State<Resetpassword> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: Container(
         width: width,
         color: backgroundcolor,
@@ -31,7 +31,6 @@ class _ResetpasswordState extends State<Resetpassword> {
                 top: 195,
                 left: 18,
                 right: 18,
-                bottom: MediaQuery.of(context).viewInsets.bottom + 23,
               ),
               child: Align(
                 alignment: Alignment.center,
@@ -57,7 +56,10 @@ class _ResetpasswordState extends State<Resetpassword> {
                       const SizedBox(
                         height: 122,
                       ),
-                      resetpasswordWidget(width)
+                      resetpasswordWidget(width),
+                      const SizedBox(
+                        height: 23,
+                      )
                     ],
                   ),
                 ),
@@ -87,11 +89,12 @@ class _ResetpasswordState extends State<Resetpassword> {
           children: [
             Container(
                 alignment: Alignment.center,
-                child: getTtile('Reset Password', 16, FontWeight.w500)),
+                child: getTtile(
+                    'Reset Password', 16, FontWeight.w500, 'Lab Grotesque')),
             const SizedBox(
               height: 31,
             ),
-            getTtile('New Password', 14, FontWeight.w500),
+            getTtile('New Password', 14, FontWeight.w500, 'Lab Grotesque'),
             const SizedBox(
               height: 11,
             ),
@@ -99,7 +102,7 @@ class _ResetpasswordState extends State<Resetpassword> {
             const SizedBox(
               height: 23,
             ),
-            getTtile('Confirm Password', 14, FontWeight.w500),
+            getTtile('Confirm Password', 14, FontWeight.w500, 'Lab Grotesque'),
             const SizedBox(
               height: 11,
             ),
@@ -157,7 +160,8 @@ class _ResetpasswordState extends State<Resetpassword> {
                       depth: NeumorphicTheme.depth(context)),
                   child: Align(
                       alignment: Alignment.center,
-                      child: getTtile('Set Password', 14, FontWeight.w500)),
+                      child: getTtile('Set Password', 14, FontWeight.w500,
+                          'Lab Grotesque')),
                 ),
               ),
             ),

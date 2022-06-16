@@ -20,7 +20,8 @@ class _ChangePasswordState extends State<ChangePassword> {
       appBar: AppBar(
         backgroundColor: neumorphicColor,
         centerTitle: true,
-        title: getTtile('Change Password', 16, FontWeight.w500),
+        title:
+            getTtile('Change Password', 16, FontWeight.w500, 'Lab Grotesque'),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -55,7 +56,8 @@ class _ChangePasswordState extends State<ChangePassword> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  getTtile('Old Password', 14, FontWeight.w500),
+                  getTtile(
+                      'Old Password', 14, FontWeight.w500, 'Lab Grotesque'),
                   const SizedBox(
                     height: 11,
                   ),
@@ -63,7 +65,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                   const SizedBox(
                     height: 23,
                   ),
-                  getTtile('New Password', 14, FontWeight.w500),
+                  getTtile(
+                      'New Password', 14, FontWeight.w500, 'Lab Grotesque'),
                   const SizedBox(
                     height: 11,
                   ),
@@ -71,7 +74,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                   const SizedBox(
                     height: 23,
                   ),
-                  getTtile('Confirm Password', 14, FontWeight.w500),
+                  getTtile(
+                      'Confirm Password', 14, FontWeight.w500, 'Lab Grotesque'),
                   const SizedBox(
                     height: 11,
                   ),
@@ -91,7 +95,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                           depth: NeumorphicTheme.depth(context)),
                       child: Align(
                           alignment: Alignment.center,
-                          child: getTtile('Set Password', 14, FontWeight.w500)),
+                          child: getTtile('Set Password', 14, FontWeight.w500,
+                              'Lab Grotesque')),
                     ),
                   ),
                 ],

@@ -22,7 +22,7 @@ class _OTPScreenState extends State<OTPScreen> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: Container(
         width: width,
         color: backgroundcolor,
@@ -34,7 +34,6 @@ class _OTPScreenState extends State<OTPScreen> {
                 top: 120,
                 left: 18,
                 right: 18,
-                bottom: 23,
               ),
               child: Align(
                 alignment: Alignment.center,
@@ -60,7 +59,10 @@ class _OTPScreenState extends State<OTPScreen> {
                       const SizedBox(
                         height: 209,
                       ),
-                      verificationcodeWidget(width)
+                      verificationcodeWidget(width),
+                      const SizedBox(
+                        height: 23,
+                      )
                       // otheRecoveryWidget(width)
                     ],
                   ),
@@ -91,12 +93,13 @@ class _OTPScreenState extends State<OTPScreen> {
             children: [
               Align(
                 alignment: Alignment.center,
-                child: getTtile('Verification Code', 16, FontWeight.w500),
+                child: getTtile(
+                    'Verification Code', 16, FontWeight.w500, 'Lab Grotesque'),
               ),
               const SizedBox(
                 height: 31,
               ),
-              getTtile('Enter OTP', 14, FontWeight.w500),
+              getTtile('Enter OTP', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 11,
               ),
@@ -171,7 +174,8 @@ class _OTPScreenState extends State<OTPScreen> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Verify', 14, FontWeight.w500)),
+                        child: getTtile(
+                            'Verify', 14, FontWeight.w500, 'Lab Grotesque')),
                   ),
                 ),
               ),

@@ -57,7 +57,8 @@ class _ProfileState extends State<Profile> {
             depth: NeumorphicTheme.depth(context)),
         child: Align(
             alignment: Alignment.center,
-            child: getTtile('Invite A Friend', 14, FontWeight.w500)),
+            child: getTtile(
+                'Invite A Friend', 14, FontWeight.w500, 'Lab Grotesque')),
       ),
     );
   }
@@ -99,15 +100,17 @@ class _ProfileState extends State<Profile> {
               const SizedBox(
                 height: 24,
               ),
-              getTtile('Alexis enache', 16, FontWeight.w500),
+              getTtile('Alexis enache', 16, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 9,
               ),
-              getTtile('Alexisenache02@gmail.com', 12, FontWeight.w500),
+              getTtile('Alexisenache02@gmail.com', 12, FontWeight.w500,
+                  'Lab Grotesque'),
               const SizedBox(
                 height: 9,
               ),
-              getTtile('1000Km - Beginner', 12, FontWeight.w500),
+              getTtile(
+                  '1000Km - Beginner', 12, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 24,
               ),
@@ -152,7 +155,7 @@ class _ProfileState extends State<Profile> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  getTtile(title, 14, FontWeight.w500),
+                  getTtile(title, 14, FontWeight.w500, 'Lab Grotesque'),
                   Container(
                     child: Image.asset(
                       'assets/images/backfill.png',

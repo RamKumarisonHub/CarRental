@@ -21,7 +21,7 @@ class _SupportTeamState extends State<SupportTeam> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: neumorphicColor,
-        title: getTtile('Support Team', 18,FontWeight.w500),
+        title: getTtile('Support Team', 18, FontWeight.w500, 'Lab Grotesque'),
         centerTitle: true,
         leading: InkWell(
             onTap: () {
@@ -40,21 +40,22 @@ class _SupportTeamState extends State<SupportTeam> {
             ListView.builder(
               itemCount: messages.length,
               shrinkWrap: true,
-              padding:const EdgeInsets.only(top: 10,bottom: 10),
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
               physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index){
+              itemBuilder: (context, index) {
                 return Container(
-                    padding:const EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
+                  padding: const EdgeInsets.only(
+                      left: 14, right: 14, top: 10, bottom: 10),
                   child: Row(
                     children: [
                       Neumorphic(
                         style: NeumorphicStyle(
                             shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+                            boxShape: NeumorphicBoxShape.roundRect(
+                                BorderRadius.circular(12)),
                             depth: 8,
                             lightSource: LightSource.topLeft,
-                            color: Colors.grey
-                        ),
+                            color: Colors.grey),
                         child: Icon(Icons.account_balance),
                       )
                     ],
@@ -90,7 +91,7 @@ class _SupportTeamState extends State<SupportTeam> {
     );
   }
 
-  Widget typemsgField(){
+  Widget typemsgField() {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
@@ -98,33 +99,29 @@ class _SupportTeamState extends State<SupportTeam> {
         child: Container(
           height: 50,
           child: Neumorphic(
-            margin: const EdgeInsets.only(
-                left: 8, right: 8, top: 2, bottom: 4),
+            margin: const EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
             style: NeumorphicStyle(
                 color: neumorphicColor,
-                boxShape: NeumorphicBoxShape.roundRect(
-                    BorderRadius.circular(15)),
+                boxShape:
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
                 intensity: 12,
                 depth: NeumorphicTheme.depth(context)),
-            padding:
-            const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
+            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
             child: TextFormField(
               cursorColor: Colors.black,
               style: GoogleFonts.roboto(
-                  color: black,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14),
+                  color: black, fontWeight: FontWeight.w400, fontSize: 14),
               decoration: InputDecoration(
                   hintText: "Type a message...",
                   helperStyle: GoogleFonts.roboto(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14) ,
+                      fontWeight: FontWeight.w400, fontSize: 14),
                   border: InputBorder.none,
                   suffixIcon: Padding(
-                    padding: const EdgeInsets.only(top: 8,bottom: 8),
+                    padding: const EdgeInsets.only(top: 8, bottom: 8),
                     child: InkWell(
-                        child: Image.asset('assets/images/send.png',
-                        )),
+                        child: Image.asset(
+                      'assets/images/send.png',
+                    )),
                   )),
             ),
           ),

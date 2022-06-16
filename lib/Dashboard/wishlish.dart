@@ -1,109 +1,42 @@
-import 'package:car_rental/Home/searchbar.dart';
+import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/gettitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-import '../utils/constants.dart';
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class Wishlist extends StatefulWidget {
+  const Wishlist({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Wishlist> createState() => _WishlistState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  List buildTopBar = [
-    {'img': 'assets/images/bwm.png', 'title': 'BMW'},
-    {'img': 'assets/images/rolls.png', 'title': 'Rolls Royce'},
-    {'img': 'assets/images/audi.png', 'title': 'Audi'}
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class _WishlistState extends State<Wishlist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundcolor,
+      appBar: AppBar(
+        backgroundColor: neumorphicColor,
+        centerTitle: true,
+        title: getTtile('Wishlist', 16, FontWeight.w500, 'Lab Grotesque'),
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              width: 24,
+              height: 24,
+              margin: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/arrow_back.png'))),
+            )),
+      ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 18, right: 18, top: 16),
+        padding:
+            const EdgeInsets.only(top: 14, right: 19, left: 19, bottom: 10),
         child: ListView(
-          shrinkWrap: true,
-          padding: const EdgeInsets.only(bottom: 20),
           children: [
-            Container(
-              height: 73,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [
-                  filterSearchWidget('assets/images/filter.png'),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SearchBar()));
-                      },
-                      child: filterSearchWidget('assets/images/search.png')),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: buildTopBar.length,
-                      itemBuilder: (context, index) {
-                        return Row(
-                          children: [
-                            SizedBox(
-                              width: 80,
-                              child: Neumorphic(
-                                style: NeumorphicStyle(
-                                  color: neumorphicColor,
-                                  boxShape: NeumorphicBoxShape.roundRect(
-                                      BorderRadius.circular(12)),
-                                  intensity: 1,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      buildTopBar[index]['img'],
-                                      width: 24,
-                                      height: 24,
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    getTtile(buildTopBar[index]['title'], 10,
-                                        FontWeight.w400, 'Lab Grotesque')
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            )
-                          ],
-                        );
-                      }),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            getTtile('Popular rides', 14, FontWeight.w500, 'Lab Grotesque'),
-            const SizedBox(
-              height: 19,
-            ),
             popularRides(
                 'assets/images/dashimg1.png',
                 'Aston Martin',
@@ -128,7 +61,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 '45',
                 '296',
                 '1200',
-                'assets/images/dashimg11.png')
+                'assets/images/dashimg11.png'),
+            const SizedBox(
+              height: 20,
+            ),
+            popularRides(
+                'assets/images/dashimg1.png',
+                'Aston Martin',
+                'Vantage',
+                '4.2',
+                '2.9',
+                '7.5',
+                '45',
+                '296',
+                '1200',
+                'assets/images/dashimg5.png'),
           ],
         ),
       ),

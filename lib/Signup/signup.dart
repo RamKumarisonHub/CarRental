@@ -52,12 +52,12 @@ class _SignUpState extends State<SignUp> {
                       const SizedBox(
                         height: 32,
                       ),
-                      getTtile('WELCOME', 22, FontWeight.w500),
+                      getTtile('WELCOME', 22, FontWeight.w500, 'Lab Grotesque'),
                       const SizedBox(
                         height: 6,
                       ),
-                      getTtile(
-                          'Continue with your Details', 14, FontWeight.w500),
+                      getTtile('Continue with your Details', 14,
+                          FontWeight.w500, 'Lab Grotesque'),
                       const SizedBox(
                         height: 56,
                       ),
@@ -94,7 +94,7 @@ class _SignUpState extends State<SignUp> {
             const EdgeInsets.only(top: 21, left: 23, right: 19.55, bottom: 19),
         child: Column(
           children: [
-            getTtile("Log In With", 14, FontWeight.w500),
+            getTtile("Log In With", 14, FontWeight.w500, 'Lab Grotesque'),
             const SizedBox(
               height: 30,
             ),
@@ -150,7 +150,9 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(child: getTtile('Create Account', 16, FontWeight.w500)),
+              Align(
+                  child: getTtile(
+                      'Create Account', 16, FontWeight.w500, 'Lab Grotesque')),
               const SizedBox(
                 height: 31,
               ),
@@ -160,7 +162,7 @@ class _SignUpState extends State<SignUp> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        getTtile('Name', 12, FontWeight.w500),
+                        getTtile('Name', 12, FontWeight.w500, 'Lab Grotesque'),
                         const SizedBox(
                           height: 13,
                         ),
@@ -176,7 +178,8 @@ class _SignUpState extends State<SignUp> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          getTtile('Surname', 12, FontWeight.w500),
+                          getTtile(
+                              'Surname', 12, FontWeight.w500, 'Lab Grotesque'),
                           const SizedBox(
                             height: 13,
                           ),
@@ -192,7 +195,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 23,
               ),
-              getTtile('Email', 14, FontWeight.w500),
+              getTtile('Email', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 3,
               ),
@@ -200,7 +203,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 23,
               ),
-              getTtile('Phone Number', 14, FontWeight.w500),
+              getTtile('Phone Number', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 3,
               ),
@@ -208,7 +211,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 23,
               ),
-              getTtile('Password', 14, FontWeight.w500),
+              getTtile('Password', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 3,
               ),
@@ -216,7 +219,8 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 23,
               ),
-              getTtile('Confirm Password', 14, FontWeight.w500),
+              getTtile(
+                  'Confirm Password', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 3,
               ),
@@ -241,7 +245,8 @@ class _SignUpState extends State<SignUp> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Sign Up', 14, FontWeight.w500)),
+                        child: getTtile(
+                            'Sign Up', 14, FontWeight.w500, 'Lab Grotesque')),
                   ),
                 ),
               ),

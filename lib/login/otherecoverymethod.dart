@@ -22,7 +22,7 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: Container(
         width: width,
         color: backgroundcolor,
@@ -34,7 +34,6 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
                 top: 187,
                 left: 18,
                 right: 18,
-                bottom: 23,
               ),
               child: Align(
                 alignment: Alignment.center,
@@ -60,7 +59,10 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
                       const SizedBox(
                         height: 138,
                       ),
-                      otheRecoveryWidget(width)
+                      otheRecoveryWidget(width),
+                      const SizedBox(
+                        height: 23,
+                      )
                     ],
                   ),
                 ),
@@ -91,18 +93,21 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
             children: [
               Container(
                 alignment: Alignment.center,
-                child: getTtile('Other recovery methods', 16, FontWeight.w500),
+                child: getTtile('Other recovery methods', 16, FontWeight.w500,
+                    'Lab Grotesque'),
               ),
               const SizedBox(
                 height: 14,
               ),
               Align(
                   alignment: Alignment.center,
-                  child: getTtile('Password Recovery', 16, FontWeight.w500)),
+                  child: getTtile('Password Recovery', 16, FontWeight.w500,
+                      'Lab Grotesque')),
               const SizedBox(
                 height: 50,
               ),
-              getTtile('Use Phone Number', 14, FontWeight.w500),
+              getTtile(
+                  'Use Phone Number', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 11,
               ),
@@ -137,7 +142,8 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Send OTP', 14, FontWeight.w500)),
+                        child: getTtile(
+                            'Send OTP', 14, FontWeight.w500, 'Lab Grotesque')),
                   ),
                 ),
               ),

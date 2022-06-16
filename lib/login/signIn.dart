@@ -20,7 +20,7 @@ class _SignInState extends State<SignIn> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: Container(
         height: height,
         width: width,
@@ -30,7 +30,10 @@ class _SignInState extends State<SignIn> {
             bottamImg(),
             Padding(
               padding: const EdgeInsets.only(
-                  top: 51, left: 18, right: 18, bottom: 33),
+                top: 51,
+                left: 18,
+                right: 18,
+              ),
               child: SingleChildScrollView(
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.start,
@@ -82,6 +85,9 @@ class _SignInState extends State<SignIn> {
                       height: 18,
                     ),
                     typesofLogin(width),
+                    const SizedBox(
+                      height: 33,
+                    )
                   ],
                 ),
               ),
@@ -111,11 +117,13 @@ class _SignInState extends State<SignIn> {
             children: [
               Container(
                   alignment: Alignment.center,
-                  child: getTtile('Log In', 16, FontWeight.w500)),
+                  child:
+                      getTtile('Log In', 16, FontWeight.w500, 'Lab Grotesque')),
               const SizedBox(
                 height: 31,
               ),
-              getTtile('Email/Phone Number', 14, FontWeight.w500),
+              getTtile(
+                  'Email/Phone Number', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 11,
               ),
@@ -123,7 +131,7 @@ class _SignInState extends State<SignIn> {
               const SizedBox(
                 height: 23,
               ),
-              getTtile('Password', 14, FontWeight.w500),
+              getTtile('Password', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 11,
               ),
@@ -204,7 +212,8 @@ class _SignInState extends State<SignIn> {
                       depth: NeumorphicTheme.depth(context)),
                   child: Align(
                       alignment: Alignment.center,
-                      child: getTtile('Log In', 14, FontWeight.w500)),
+                      child: getTtile(
+                          'Log In', 14, FontWeight.w500, 'Lab Grotesque')),
                 ),
               ),
               const SizedBox(
@@ -228,7 +237,7 @@ class _SignInState extends State<SignIn> {
                                       builder: (context) => SignUp()));
                             },
                           text: 'Sign Up',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: Color(0xffDD3155)))

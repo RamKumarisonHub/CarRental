@@ -20,7 +20,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: Container(
           width: width,
           color: backgroundcolor,
@@ -32,7 +32,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   top: 165,
                   left: 18,
                   right: 18,
-                  bottom: 23,
                 ),
                 child: Align(
                   alignment: Alignment.center,
@@ -58,7 +57,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         const SizedBox(
                           height: 131,
                         ),
-                        forgotWidget(width)
+                        forgotWidget(width),
+                        const SizedBox(
+                          height: 23,
+                        )
                       ],
                     ),
                   ),
@@ -88,12 +90,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             children: [
               Container(
                 alignment: Alignment.center,
-                child: getTtile('Forgot Password', 16, FontWeight.w500),
+                child: getTtile(
+                    'Forgot Password', 16, FontWeight.w500, 'Lab Grotesque'),
               ),
               const SizedBox(
                 height: 31,
               ),
-              getTtile('Email', 14, FontWeight.w500),
+              getTtile('Email', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 11,
               ),
@@ -113,7 +116,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       depth: NeumorphicTheme.depth(context)),
                   child: Align(
                       alignment: Alignment.center,
-                      child: getTtile('Submit', 14, FontWeight.w500)),
+                      child: getTtile(
+                          'Submit', 14, FontWeight.w500, 'Lab Grotesque')),
                 ),
               ),
               const SizedBox(
@@ -128,8 +132,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             MaterialPageRoute(
                                 builder: (context) => OtherecoveryMethod()));
                       },
-                      child: getTtile(
-                          'Other recovery methods', 14, FontWeight.w500))),
+                      child: getTtile('Other recovery methods', 14,
+                          FontWeight.w500, 'Lab Grotesque'))),
               const SizedBox(
                 height: 18,
               ),
@@ -142,8 +146,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         //     MaterialPageRoute(
                         //         builder: (context) => SupportTeam()));
                       },
-                      child: getTtile(
-                          'Reach out to support', 14, FontWeight.w500))),
+                      child: getTtile('Reach out to support', 14,
+                          FontWeight.w500, 'Lab Grotesque'))),
             ],
           ),
         ),

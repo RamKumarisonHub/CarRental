@@ -16,28 +16,25 @@ class _SearchBarState extends State<SearchBar> {
       backgroundColor: backgroundcolor,
       body: ListView(
         children: [
-heading(),
+          heading(),
         ],
       ),
     );
   }
 
-  Widget heading(){
+  Widget heading() {
     return Padding(
-      padding: const EdgeInsets.only(left: 18,right: 18,top: 30),
+      padding: const EdgeInsets.only(left: 18, right: 18, top: 30),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween
-        ,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          getTtile('Search Car', 14, FontWeight.w500),
+          getTtile('Search Car', 14, FontWeight.w500, 'Lab Grotesque'),
           Container(
             width: 25,
             height: 25,
             decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/close.png')
-              )
-            ),
+                image: DecorationImage(
+                    image: AssetImage('assets/images/close.png'))),
           )
         ],
       ),

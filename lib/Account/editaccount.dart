@@ -21,7 +21,7 @@ class _EditAccountState extends State<EditAccount> {
       appBar: AppBar(
         backgroundColor: neumorphicColor,
         centerTitle: true,
-        title: getTtile('Edit Account', 16, FontWeight.w500),
+        title: getTtile('Edit Account', 16, FontWeight.w500, 'Lab Grotesque'),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -68,7 +68,9 @@ class _EditAccountState extends State<EditAccount> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    selectphotoDialogbox();
+                  },
                   child: Align(
                     child: Container(
                       width: 110,
@@ -95,13 +97,15 @@ class _EditAccountState extends State<EditAccount> {
                 const SizedBox(
                   height: 24,
                 ),
-                Align(child: getTtile('Alexis enache', 16, FontWeight.w500)),
+                Align(
+                    child: getTtile(
+                        'Alexis enache', 16, FontWeight.w500, 'Lab Grotesque')),
                 const SizedBox(
                   height: 9,
                 ),
                 Align(
-                    child: getTtile(
-                        'Alexisenache02@gmail.com', 12, FontWeight.w500)),
+                    child: getTtile('Alexisenache02@gmail.com', 12,
+                        FontWeight.w500, 'Lab Grotesque')),
                 const SizedBox(
                   height: 38,
                 ),
@@ -112,7 +116,8 @@ class _EditAccountState extends State<EditAccount> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          getTtile('Name', 12, FontWeight.w500),
+                          getTtile(
+                              'Name', 12, FontWeight.w500, 'Lab Grotesque'),
                           const SizedBox(
                             height: 11,
                           ),
@@ -128,7 +133,8 @@ class _EditAccountState extends State<EditAccount> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            getTtile('Surname', 12, FontWeight.w500),
+                            getTtile('Surname', 12, FontWeight.w500,
+                                'Lab Grotesque'),
                             const SizedBox(
                               height: 11,
                             ),
@@ -144,7 +150,7 @@ class _EditAccountState extends State<EditAccount> {
                 const SizedBox(
                   height: 23,
                 ),
-                getTtile('Email', 14, FontWeight.w500),
+                getTtile('Email', 14, FontWeight.w500, 'Lab Grotesque'),
                 const SizedBox(
                   height: 11,
                 ),
@@ -152,7 +158,7 @@ class _EditAccountState extends State<EditAccount> {
                 const SizedBox(
                   height: 23,
                 ),
-                getTtile('Phone Number', 14, FontWeight.w500),
+                getTtile('Phone Number', 14, FontWeight.w500, 'Lab Grotesque'),
                 const SizedBox(
                   height: 11,
                 ),
@@ -160,7 +166,7 @@ class _EditAccountState extends State<EditAccount> {
                 const SizedBox(
                   height: 23,
                 ),
-                getTtile('Age', 14, FontWeight.w500),
+                getTtile('Age', 14, FontWeight.w500, 'Lab Grotesque'),
                 const SizedBox(
                   height: 11,
                 ),
@@ -168,7 +174,7 @@ class _EditAccountState extends State<EditAccount> {
                 const SizedBox(
                   height: 23,
                 ),
-                getTtile('Country', 14, FontWeight.w500),
+                getTtile('Country', 14, FontWeight.w500, 'Lab Grotesque'),
                 const SizedBox(
                   height: 11,
                 ),
@@ -200,7 +206,7 @@ class _EditAccountState extends State<EditAccount> {
               depth: NeumorphicTheme.depth(context)),
           child: Align(
               alignment: Alignment.center,
-              child: getTtile('Save', 14, FontWeight.w500)),
+              child: getTtile('Save', 14, FontWeight.w500, 'Lab Grotesque')),
         ),
       ),
     );
@@ -239,11 +245,91 @@ class _EditAccountState extends State<EditAccount> {
     );
   }
 
-  //  selectphotoDialogbox() {
-  //   return showModalBottomSheet(
-
-  //     context: context, builder: (context) {
-
-  //   });
-  // }
+  selectphotoDialogbox() {
+    return showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+            // <-- SEE HERE
+            borderRadius: BorderRadius.vertical(
+          top: Radius.circular(35.0),
+        )),
+        context: context,
+        builder: (context) {
+          return Container(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 18, bottom: 30),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  getTtile('Select', 14, FontWeight.w500, 'Lab Grotesque'),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: 51.4,
+                            width: 51.4,
+                            child: Neumorphic(
+                              style: NeumorphicStyle(
+                                  color: neumorphicColor,
+                                  boxShape: NeumorphicBoxShape.circle(),
+                                  intensity: 1,
+                                  depth: NeumorphicTheme.depth(context)),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  'assets/images/camera.png',
+                                  width: 20,
+                                  height: 18.4,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 11,
+                          ),
+                          getTtile('Take a Picture', 12, FontWeight.w500,
+                              'Lab Grotesque'),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            height: 51.4,
+                            width: 51.4,
+                            child: Neumorphic(
+                              style: NeumorphicStyle(
+                                  color: neumorphicColor,
+                                  boxShape: NeumorphicBoxShape.circle(),
+                                  intensity: 1,
+                                  depth: NeumorphicTheme.depth(context)),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  'assets/images/gallery.png',
+                                  width: 20,
+                                  height: 18.4,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 11,
+                          ),
+                          getTtile('Take a Picture', 12, FontWeight.w500,
+                              'Lab Grotesque'),
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
 }

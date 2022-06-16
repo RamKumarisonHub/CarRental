@@ -22,7 +22,7 @@ class _MoreDetailsState extends State<MoreDetails> {
       appBar: AppBar(
         backgroundColor: neumorphicColor,
         centerTitle: true,
-        title: getTtile('More Details', 16, FontWeight.w500),
+        title: getTtile('More Details', 16, FontWeight.w500, 'Lab Grotesque'),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -56,7 +56,8 @@ class _MoreDetailsState extends State<MoreDetails> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      getTtile('Date Of Birth', 14, FontWeight.w500),
+                      getTtile('Date Of Birth', 14, FontWeight.w500,
+                          'Lab Grotesque'),
                       const SizedBox(
                         height: 11,
                       ),
@@ -64,7 +65,8 @@ class _MoreDetailsState extends State<MoreDetails> {
                       const SizedBox(
                         height: 23,
                       ),
-                      getTtile('Country', 14, FontWeight.w500),
+                      getTtile(
+                          'Country', 14, FontWeight.w500, 'Lab Grotesque '),
                       const SizedBox(
                         height: 11,
                       ),
@@ -95,7 +97,8 @@ class _MoreDetailsState extends State<MoreDetails> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Continue', 14, FontWeight.w500)),
+                        child: getTtile(
+                            'Continue', 14, FontWeight.w500, 'Lab Grotesque')),
                   ),
                 ),
               ),

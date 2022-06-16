@@ -1,3 +1,4 @@
+import 'package:car_rental/Signup/drivinglicencedocuments.dart';
 import 'package:car_rental/Signup/passport.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/gettitle.dart';
@@ -23,7 +24,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
       appBar: AppBar(
         backgroundColor: neumorphicColor,
         centerTitle: true,
-        title: getTtile('Driving License', 16, FontWeight.w500),
+        title:
+            getTtile('Driving License', 16, FontWeight.w500, 'Lab Grotesque'),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -55,7 +57,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    getTtile('Driving License details', 14, FontWeight.w500),
+                    getTtile('Driving License details', 14, FontWeight.w500,
+                        'Lab Grotesque'),
                     const SizedBox(
                       height: 49.34,
                     ),
@@ -66,7 +69,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              getTtile('Name', 12, FontWeight.w500),
+                              getTtile(
+                                  'Name', 12, FontWeight.w500, 'Lab Grotesque'),
                               const SizedBox(
                                 height: 13,
                               ),
@@ -82,7 +86,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                getTtile('Surname', 12, FontWeight.w500),
+                                getTtile('Surname', 12, FontWeight.w500,
+                                    'Lab Grotesque'),
                                 const SizedBox(
                                   height: 13,
                                 ),
@@ -99,7 +104,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                     const SizedBox(
                       height: 9,
                     ),
-                    getTtile('Driving License Number', 12, FontWeight.w500),
+                    getTtile('Driving License Number', 12, FontWeight.w500,
+                        'Lab Grotesque'),
                     const SizedBox(
                       height: 3,
                     ),
@@ -107,7 +113,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                     const SizedBox(
                       height: 9,
                     ),
-                    getTtile('Expiry Date', 12, FontWeight.w500),
+                    getTtile(
+                        'Expiry Date', 12, FontWeight.w500, 'Lab Grotesque'),
                     const SizedBox(
                       height: 9,
                     ),
@@ -115,7 +122,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                     const SizedBox(
                       height: 9,
                     ),
-                    getTtile('Country Of Issue', 12, FontWeight.w500),
+                    getTtile('Country Of Issue', 12, FontWeight.w500,
+                        'Lab Grotesque'),
                     const SizedBox(
                       height: 3,
                     ),
@@ -153,7 +161,7 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                     const SizedBox(
                       height: 9,
                     ),
-                    getTtile('Category', 12, FontWeight.w500),
+                    getTtile('Category', 12, FontWeight.w500, 'Lab Grotesque'),
                     const SizedBox(
                       height: 3,
                     ),
@@ -165,7 +173,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
             const SizedBox(
               height: 20,
             ),
-            getTtile('Upload your Driving License', 14, FontWeight.w500),
+            getTtile('Upload your Driving License', 14, FontWeight.w500,
+                'Lab Grotesque'),
             const SizedBox(
               height: 4,
             ),
@@ -190,8 +199,9 @@ class _DrivingLicenceState extends State<DrivingLicence> {
   Widget verify() {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Passport()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => DrivingLicenseDocuments()));
+        // Passport
       },
       child: Container(
         height: 55,
@@ -205,7 +215,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
               depth: NeumorphicTheme.depth(context)),
           child: Align(
               alignment: Alignment.center,
-              child: getTtile('Continue', 14, FontWeight.w500)),
+              child:
+                  getTtile('Continue', 14, FontWeight.w500, 'Lab Grotesque')),
         ),
       ),
     );
@@ -227,7 +238,7 @@ class _DrivingLicenceState extends State<DrivingLicence> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  getTtile('Uploading', 12, FontWeight.w500),
+                  getTtile('Uploading', 12, FontWeight.w500, 'Lab Grotesque'),
                   const SizedBox(
                     height: 18,
                   ),
@@ -237,12 +248,13 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                       Container(
                         child: Row(
                           children: [
-                            getTtile('62%', 12, FontWeight.w400),
+                            getTtile(
+                                '62%', 12, FontWeight.w400, 'Lab Grotesque'),
                             SizedBox(
                               width: 8,
                             ),
-                            getTtile(
-                                '12 Second Remaining', 12, FontWeight.w400),
+                            getTtile('12 Second Remaining', 12, FontWeight.w400,
+                                'Lab Grotesque'),
                           ],
                         ),
                       ),
@@ -307,8 +319,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
             const SizedBox(
               height: 14,
             ),
-            getTtile(
-                'Click a Photo / Upload From Gallery', 12, FontWeight.w500),
+            getTtile('Click a Photo / Upload From Gallery', 12, FontWeight.w500,
+                'Lab Grotesque'),
           ],
         ),
       ),

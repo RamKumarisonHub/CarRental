@@ -92,12 +92,13 @@ class _SignupOTPState extends State<SignupOTP> {
             children: [
               Align(
                 alignment: Alignment.center,
-                child: getTtile('Verification Code', 16, FontWeight.w500),
+                child: getTtile(
+                    'Verification Code', 16, FontWeight.w500, 'Lab Grotesque'),
               ),
               const SizedBox(
                 height: 31,
               ),
-              getTtile('Enter OTP', 14, FontWeight.w500),
+              getTtile('Enter OTP', 14, FontWeight.w500, 'Lab Grotesque'),
               const SizedBox(
                 height: 11,
               ),
@@ -172,7 +173,8 @@ class _SignupOTPState extends State<SignupOTP> {
                         depth: NeumorphicTheme.depth(context)),
                     child: Align(
                         alignment: Alignment.center,
-                        child: getTtile('Verify', 14, FontWeight.w500)),
+                        child: getTtile(
+                            'Verify', 14, FontWeight.w500, 'Lab Grotesque')),
                   ),
                 ),
               ),

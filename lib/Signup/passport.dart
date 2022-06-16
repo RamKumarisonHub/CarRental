@@ -1,4 +1,5 @@
 import 'package:car_rental/Dashboard/dashboard.dart';
+import 'package:car_rental/Signup/passportdocuments.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/gettitle.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -24,7 +25,7 @@ class _PassportState extends State<Passport> {
       appBar: AppBar(
         backgroundColor: neumorphicColor,
         centerTitle: true,
-        title: getTtile('Passport', 16, FontWeight.w500),
+        title: getTtile('Passport', 16, FontWeight.w500, 'Lab Grotesque'),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -47,7 +48,7 @@ class _PassportState extends State<Passport> {
                   shape: NeumorphicShape.concave,
                   lightSource: LightSource.topLeft,
                   boxShape:
-                      NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
+                      NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
                   intensity: 1,
                   color: neumorphicColor),
               child: Padding(
@@ -56,7 +57,8 @@ class _PassportState extends State<Passport> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    getTtile('Passport details', 14, FontWeight.w500),
+                    getTtile('Passport details', 14, FontWeight.w500,
+                        'Lab Grotesque'),
                     const SizedBox(
                       height: 49.34,
                     ),
@@ -67,7 +69,8 @@ class _PassportState extends State<Passport> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              getTtile('Name', 12, FontWeight.w500),
+                              getTtile(
+                                  'Name', 12, FontWeight.w500, 'Lab Grotesque'),
                               const SizedBox(
                                 height: 13,
                               ),
@@ -83,7 +86,8 @@ class _PassportState extends State<Passport> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                getTtile('Surname', 12, FontWeight.w500),
+                                getTtile('Surname', 12, FontWeight.w500,
+                                    'Lab Grotesque'),
                                 const SizedBox(
                                   height: 13,
                                 ),
@@ -100,7 +104,7 @@ class _PassportState extends State<Passport> {
                     const SizedBox(
                       height: 9,
                     ),
-                    getTtile('Country', 12, FontWeight.w500),
+                    getTtile('Country', 12, FontWeight.w500, 'Lab Grotesque'),
                     const SizedBox(
                       height: 3,
                     ),
@@ -108,7 +112,8 @@ class _PassportState extends State<Passport> {
                     const SizedBox(
                       height: 9,
                     ),
-                    getTtile('Passport Number', 12, FontWeight.w500),
+                    getTtile('Passport Number', 12, FontWeight.w500,
+                        'Lab Grotesque'),
                     const SizedBox(
                       height: 3,
                     ),
@@ -116,7 +121,8 @@ class _PassportState extends State<Passport> {
                     const SizedBox(
                       height: 9,
                     ),
-                    getTtile('Expiry Date', 12, FontWeight.w500),
+                    getTtile(
+                        'Expiry Date', 12, FontWeight.w500, 'Lab Grotesque'),
                     const SizedBox(
                       height: 9,
                     ),
@@ -131,7 +137,8 @@ class _PassportState extends State<Passport> {
             const SizedBox(
               height: 20,
             ),
-            getTtile('Upload your Passport', 14, FontWeight.w500),
+            getTtile(
+                'Upload your Passport', 14, FontWeight.w500, 'Lab Grotesque'),
             const SizedBox(
               height: 4,
             ),
@@ -160,15 +167,19 @@ class _PassportState extends State<Passport> {
   Widget Skip() {
     return Container(
       child: TextButton(
-          onPressed: () {}, child: getTtile('Skip', 14, FontWeight.w500)),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Dashboard()));
+          },
+          child: getTtile('Skip', 14, FontWeight.w500, 'Lab Grotesque')),
     );
   }
 
   Widget Submit() {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Dashboard()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => PassPortDocument()));
       },
       child: Container(
         height: 55,
@@ -182,7 +193,7 @@ class _PassportState extends State<Passport> {
               depth: NeumorphicTheme.depth(context)),
           child: Align(
               alignment: Alignment.center,
-              child: getTtile('Submit', 14, FontWeight.w500)),
+              child: getTtile('Submit', 14, FontWeight.w500, 'Lab Grotesque')),
         ),
       ),
     );
@@ -194,7 +205,7 @@ class _PassportState extends State<Passport> {
       child: Neumorphic(
         style: NeumorphicStyle(
             color: neumorphicColor,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(27.5)),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
             intensity: 1,
             depth: NeumorphicTheme.depth(context)),
         child: Align(
@@ -204,7 +215,7 @@ class _PassportState extends State<Passport> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  getTtile('Uploading', 12, FontWeight.w500),
+                  getTtile('Uploading', 12, FontWeight.w500, 'Lab Grotesque'),
                   const SizedBox(
                     height: 18,
                   ),
@@ -214,12 +225,13 @@ class _PassportState extends State<Passport> {
                       Container(
                         child: Row(
                           children: [
-                            getTtile('62%', 12, FontWeight.w400),
+                            getTtile(
+                                '62%', 12, FontWeight.w400, 'Lab Grotesque'),
                             const SizedBox(
                               width: 8,
                             ),
-                            getTtile(
-                                '12 Second Remaining', 12, FontWeight.w400),
+                            getTtile('12 Second Remaining', 12, FontWeight.w400,
+                                'Lab Grotesque'),
                           ],
                         ),
                       ),
@@ -256,7 +268,7 @@ class _PassportState extends State<Passport> {
       child: Neumorphic(
         style: NeumorphicStyle(
             color: neumorphicColor,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
             intensity: 1,
             depth: NeumorphicTheme.embossDepth(context)),
         child: Column(
@@ -284,8 +296,8 @@ class _PassportState extends State<Passport> {
             const SizedBox(
               height: 14,
             ),
-            getTtile(
-                'Click a Photo / Upload From Gallery', 12, FontWeight.w500),
+            getTtile('Click a Photo / Upload From Gallery', 12, FontWeight.w500,
+                'Lab Grotesque'),
           ],
         ),
       ),
@@ -298,7 +310,7 @@ class _PassportState extends State<Passport> {
       style: NeumorphicStyle(
           color: neumorphicColor,
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-          intensity: 12,
+          intensity: 1,
           depth: NeumorphicTheme.embossDepth(context)),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       child: Container(
