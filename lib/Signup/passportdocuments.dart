@@ -52,7 +52,9 @@ class _PassPortDocumentState extends State<PassPortDocument> {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => DrivingLicence()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => DrivingLicence('passportdoc')));
       },
       child: Container(
         height: 51.14,

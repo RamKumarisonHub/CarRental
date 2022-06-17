@@ -1,4 +1,6 @@
+import 'package:car_rental/Home/filter.dart';
 import 'package:car_rental/Home/searchbar.dart';
+import 'package:car_rental/Home/selectdatetime.dart';
 import 'package:car_rental/widget/gettitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -40,7 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 children: [
-                  filterSearchWidget('assets/images/filter.png'),
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SelectDateTime()));
+                      },
+                      child: filterSearchWidget('assets/images/filter.png')),
                   const SizedBox(
                     width: 20,
                   ),

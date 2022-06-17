@@ -43,7 +43,7 @@ class _DocumentsState extends State<Documents> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DrivingLicence()));
+                          builder: (context) => DrivingLicence('documents')));
                 },
                 child: documentsWidget('Driving License')),
             const SizedBox(
@@ -51,8 +51,10 @@ class _DocumentsState extends State<Documents> {
             ),
             GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Passport()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Passport('documents')));
                 },
                 child: documentsWidget('Passport'))
           ],

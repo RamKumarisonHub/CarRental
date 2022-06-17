@@ -8,8 +8,8 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:dotted_border/dotted_border.dart';
 
 class DrivingLicence extends StatefulWidget {
-  const DrivingLicence({Key? key}) : super(key: key);
-
+  final String routesString;
+  DrivingLicence(this.routesString);
   @override
   State<DrivingLicence> createState() => _DrivingLicenceState();
 }
@@ -199,24 +199,34 @@ class _DrivingLicenceState extends State<DrivingLicence> {
   Widget verify() {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => DrivingLicenseDocuments()));
+        widget.routesString == 'selectdatetime'
+            ? Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Passport('selectdatetime')))
+            : Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DrivingLicenseDocuments()));
         // Passport
       },
-      child: Container(
-        height: 55,
-        width: double.infinity,
-        child: Neumorphic(
-          style: NeumorphicStyle(
-              color: neumorphicColor,
-              boxShape:
-                  NeumorphicBoxShape.roundRect(BorderRadius.circular(27.5)),
-              intensity: 12,
-              depth: NeumorphicTheme.depth(context)),
-          child: Align(
-              alignment: Alignment.center,
-              child:
-                  getTtile('Continue', 14, FontWeight.w500, 'Lab Grotesque')),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 27, right: 24),
+        child: Container(
+          height: 55,
+          width: double.infinity,
+          child: Neumorphic(
+            style: NeumorphicStyle(
+                color: neumorphicColor,
+                boxShape:
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(27.5)),
+                intensity: 12,
+                depth: NeumorphicTheme.depth(context)),
+            child: Align(
+                alignment: Alignment.center,
+                child:
+                    getTtile('Continue', 14, FontWeight.w500, 'Lab Grotesque')),
+          ),
         ),
       ),
     );
@@ -228,7 +238,7 @@ class _DrivingLicenceState extends State<DrivingLicence> {
       child: Neumorphic(
         style: NeumorphicStyle(
             color: neumorphicColor,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(27.5)),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
             intensity: 12,
             depth: NeumorphicTheme.depth(context)),
         child: Align(
@@ -345,8 +355,10 @@ class _DrivingLicenceState extends State<DrivingLicence> {
           style: const TextStyle(
               fontSize: 12, color: black, fontWeight: FontWeight.w500),
           decoration: InputDecoration(
-              prefixIcon: Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
+              prefixIcon: Container(
+                width: 5.5,
+                height: 16.5,
+                alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/country.png',
                   width: 5.5,

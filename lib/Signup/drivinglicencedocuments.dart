@@ -53,8 +53,8 @@ class _DrivingLicenseDocumentsState extends State<DrivingLicenseDocuments> {
   Widget passportWidget() {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Passport()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => Passport('drivingdoc')));
       },
       child: Container(
         height: 51.14,

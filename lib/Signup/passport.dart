@@ -1,4 +1,5 @@
 import 'package:car_rental/Dashboard/dashboard.dart';
+import 'package:car_rental/Home/bookingdetails.dart';
 import 'package:car_rental/Signup/passportdocuments.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/gettitle.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import '../widget/textfield.dart';
 
 class Passport extends StatefulWidget {
-  const Passport({Key? key}) : super(key: key);
+  final String routesString;
+  Passport(this.routesString);
 
   @override
   State<Passport> createState() => _PassportState();
@@ -154,7 +156,7 @@ class _PassportState extends State<Passport> {
             const SizedBox(
               height: 25,
             ),
-            Skip(),
+            widget.routesString == 'selectdatetime' ? Container() : Skip(),
             const SizedBox(
               height: 46,
             )
@@ -178,22 +180,29 @@ class _PassportState extends State<Passport> {
   Widget Submit() {
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => PassPortDocument()));
+        widget.routesString == 'selectdatetime'
+            ? Navigator.push(context,
+                MaterialPageRoute(builder: (context) => BookindDetails()))
+            : Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PassPortDocument()));
       },
-      child: Container(
-        height: 55,
-        width: double.infinity,
-        child: Neumorphic(
-          style: NeumorphicStyle(
-              color: neumorphicColor,
-              boxShape:
-                  NeumorphicBoxShape.roundRect(BorderRadius.circular(27.5)),
-              intensity: 12,
-              depth: NeumorphicTheme.depth(context)),
-          child: Align(
-              alignment: Alignment.center,
-              child: getTtile('Submit', 14, FontWeight.w500, 'Lab Grotesque')),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 27, right: 24),
+        child: Container(
+          height: 55,
+          width: double.infinity,
+          child: Neumorphic(
+            style: NeumorphicStyle(
+                color: neumorphicColor,
+                boxShape:
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(27.5)),
+                intensity: 12,
+                depth: NeumorphicTheme.depth(context)),
+            child: Align(
+                alignment: Alignment.center,
+                child:
+                    getTtile('Submit', 14, FontWeight.w500, 'Lab Grotesque')),
+          ),
         ),
       ),
     );
@@ -268,7 +277,7 @@ class _PassportState extends State<Passport> {
       child: Neumorphic(
         style: NeumorphicStyle(
             color: neumorphicColor,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
             intensity: 1,
             depth: NeumorphicTheme.embossDepth(context)),
         child: Column(
@@ -322,8 +331,10 @@ class _PassportState extends State<Passport> {
           style: const TextStyle(
               fontSize: 12, color: black, fontWeight: FontWeight.w500),
           decoration: InputDecoration(
-              prefixIcon: Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
+              prefixIcon: Container(
+                width: 5.5,
+                height: 16.5,
+                alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/country.png',
                   width: 5.5,

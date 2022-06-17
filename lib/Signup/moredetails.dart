@@ -83,7 +83,7 @@ class _MoreDetailsState extends State<MoreDetails> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DrivingLicence()));
+                          builder: (context) => DrivingLicence('moredetails')));
                 },
                 child: Container(
                   height: 55,
@@ -127,8 +127,10 @@ class _MoreDetailsState extends State<MoreDetails> {
           style: const TextStyle(
               fontSize: 12, color: black, fontWeight: FontWeight.w500),
           decoration: InputDecoration(
-              prefixIcon: Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
+              prefixIcon: Container(
+                width: 5.5,
+                height: 16.5,
+                alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/country.png',
                   width: 5.5,
