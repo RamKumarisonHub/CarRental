@@ -54,7 +54,8 @@ class _PassPortDocumentState extends State<PassPortDocument> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => DrivingLicence('passportdoc')));
+                builder: (context) =>
+                    DrivingLicence('passportdoc', 'passportdoc')));
       },
       child: Container(
         height: 51.14,

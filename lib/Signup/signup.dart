@@ -113,17 +113,22 @@ class _SignUpState extends State<SignUp> {
                           depth: NeumorphicTheme.depth(context)),
                       child: Image.asset('assets/images/Google.png')),
                 ),
-                Container(
-                  height: 55,
-                  width: 135.5,
-                  child: Neumorphic(
-                      style: NeumorphicStyle(
-                          color: neumorphicColor,
-                          boxShape: NeumorphicBoxShape.roundRect(
-                              BorderRadius.circular(27.5)),
-                          intensity: 1,
-                          depth: NeumorphicTheme.depth(context)),
-                      child: Image.asset('assets/images/instra.png')),
+                const SizedBox(
+                  width: 19.5,
+                ),
+                Flexible(
+                  child: Container(
+                    height: 55,
+                    width: 135.5,
+                    child: Neumorphic(
+                        style: NeumorphicStyle(
+                            color: neumorphicColor,
+                            boxShape: NeumorphicBoxShape.roundRect(
+                                BorderRadius.circular(27.5)),
+                            intensity: 1,
+                            depth: NeumorphicTheme.depth(context)),
+                        child: Image.asset('assets/images/instra.png')),
+                  ),
                 )
               ],
             ),
@@ -136,15 +141,9 @@ class _SignUpState extends State<SignUp> {
   Widget createAccount(double width) {
     return Container(
       width: width,
-      child: Neumorphic(
-        style: NeumorphicStyle(
-            shape: NeumorphicShape.concave,
-            lightSource: LightSource.topLeft,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-            intensity: 1,
-            shadowLightColor: const Color(0xffFAF9F9),
-            color: neumorphicColor),
-        child: Padding(
+      child: neurphicmcontainer(
+        25,
+        Padding(
           padding:
               const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 23),
           child: Column(
@@ -168,7 +167,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         Container(
                             width: width / 2.5,
-                            child: textfield(context, 'Aliexis enache')),
+                            child: textfield(context, 'Aliexis enache', false)),
                       ],
                     ),
                     const SizedBox(
@@ -185,7 +184,8 @@ class _SignUpState extends State<SignUp> {
                           ),
                           Container(
                               width: width / 2,
-                              child: textfield(context, 'Aliexis enache')),
+                              child:
+                                  textfield(context, 'Aliexis enache', false)),
                         ],
                       ),
                     )
@@ -199,7 +199,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 3,
               ),
-              textfield(context, 'x x x x x'),
+              textfield(context, 'x x x x x', false),
               const SizedBox(
                 height: 23,
               ),
@@ -207,7 +207,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 3,
               ),
-              textfield(context, '0123456789'),
+              textfield(context, '0123456789', false),
               const SizedBox(
                 height: 23,
               ),
@@ -215,7 +215,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 3,
               ),
-              textfield(context, 'x x x x x'),
+              textfield(context, 'x x x x x', false),
               const SizedBox(
                 height: 23,
               ),
@@ -224,7 +224,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 3,
               ),
-              textfield(context, 'x x x x x'),
+              textfield(context, 'x x x x x', false),
               const SizedBox(
                 height: 38,
               ),
@@ -272,7 +272,7 @@ class _SignUpState extends State<SignUp> {
                                         builder: (context) => SignIn()));
                               },
                             text: 'Sign In',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.red,
                                 fontWeight: FontWeight.w500))
@@ -284,5 +284,30 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+
+  Neumorphic neurphicmcontainer(double radius, Widget child) {
+    return Neumorphic(
+      style: NeumorphicStyle(
+          lightSource: LightSource.topLeft,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(radius)),
+          intensity: 1,
+          depth: NeumorphicTheme.depth(context),
+          // shadowLightColor: const Color(0xffFAF9F9),
+          color: neumorphicColor),
+      child: child,
+    );
+  }
+
+  Neumorphic embossNeurphicm(Widget child) {
+    return Neumorphic(
+        margin: const EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+        style: NeumorphicStyle(
+            color: neumorphicColor,
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
+            intensity: 1,
+            depth: NeumorphicTheme.embossDepth(context)),
+        padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
+        child: child);
   }
 }

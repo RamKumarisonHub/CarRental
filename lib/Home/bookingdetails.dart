@@ -1,5 +1,9 @@
+import 'package:car_rental/Home/payment.dart';
+import 'package:car_rental/Home/termscondition.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/gettitle.dart';
+import 'package:dotted_border/dotted_border.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -11,8 +15,11 @@ class BookindDetails extends StatefulWidget {
 }
 
 class _BookindDetailsState extends State<BookindDetails> {
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: backgroundcolor,
       appBar: AppBar(
@@ -55,7 +62,7 @@ class _BookindDetailsState extends State<BookindDetails> {
             const SizedBox(
               height: 18,
             ),
-            bookingDetails(),
+            bookingDate(),
             const SizedBox(
               height: 18,
             ),
@@ -63,18 +70,304 @@ class _BookindDetailsState extends State<BookindDetails> {
             const SizedBox(
               height: 18,
             ),
-            Deposit()
+            Deposit(),
+            const SizedBox(
+              height: 18,
+            ),
+            paymentMethod(width),
+            const SizedBox(
+              height: 18,
+            ),
+            bookingInfo(),
+            const SizedBox(
+              height: 18,
+            ),
+            tmscond(),
+            const SizedBox(
+              height: 61,
+            ),
+            createButton(),
+            const SizedBox(
+              height: 100,
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget paymentMethod() {
+  Widget createButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Payment()));
+      },
+      child: Container(
+          padding: const EdgeInsets.only(left: 27, right: 24),
+          height: 51.14,
+          child: neurphicmcontainer(
+              27.5,
+              Align(
+                alignment: Alignment.center,
+                child: getTtile(
+                    'Processed To Pay', 14, FontWeight.w500, 'Lab Grotesque'),
+              ))),
+    );
+  }
+
+  Widget tmscond() {
+    return Row(
+      children: [
+        InkWell(
+          onTap: () {
+            setState(() {
+              isChecked = !isChecked;
+            });
+          },
+          child: isChecked == false
+              ? Container(
+                  width: 18,
+                  height: 18,
+                  child: Image.asset(
+                    'assets/images/uncheck.png',
+                    width: 18,
+                    height: 18,
+                  ),
+                )
+              : Container(
+                  width: 18,
+                  height: 18,
+                  child: Image.asset(
+                    'assets/images/checked.png',
+                    width: 18,
+                    height: 18,
+                  ),
+                ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => TermsConditions()));
+          },
+          child: const Text(
+            'Terms & Conditions',
+            style: TextStyle(
+                color: red,
+                fontWeight: FontWeight.w500,
+                fontSize: 12,
+                fontFamily: 'Lab Grotesque'),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget bookingInfo() {
     return neurphicmcontainer(
         12,
         Padding(
-          padding: EdgeInsets.only(),
+          padding: const EdgeInsets.only(top: 12, bottom: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 13,
+                  right: 13,
+                ),
+                child: getTtile(
+                    'Booking Info', 14, FontWeight.w500, 'Lab Grotesque'),
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+              BookinginfoRow("Booking Date", '2 Apr to 4 Apr'),
+              const SizedBox(
+                height: 12,
+              ),
+              BookinginfoRow('Number of Days', '2 Days'),
+              const SizedBox(
+                height: 12,
+              ),
+              BookingInfowithUSd("Pirce Per Day", '2400'),
+              const SizedBox(
+                height: 12,
+              ),
+              BookinginfoRow('Discount', '5%'),
+              const SizedBox(
+                height: 12,
+              ),
+              BookingInfowithUSd("Booking Amount", '2400'),
+              const SizedBox(
+                height: 12,
+              ),
+              BookingInfoDepositAmount(),
+              const SizedBox(
+                height: 20,
+              ),
+              const DottedLine(),
+              const SizedBox(
+                height: 10,
+              ),
+              BookingInfowithUSd("Total Pay", '1200'),
+              const SizedBox(
+                height: 10,
+              ),
+              const DottedLine(),
+            ],
+          ),
+        ));
+  }
+
+  Widget BookingInfoDepositAmount() {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 13,
+        right: 13,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            child: Row(
+              children: [
+                getTtile('Desposit', 12, FontWeight.w400, 'Lab Grotesque'),
+                const SizedBox(
+                  width: 5,
+                ),
+                Container(
+                  height: 14,
+                  width: 14,
+                  child: Image.asset('assets/images/info.png'),
+                ),
+              ],
+            ),
+          ),
+          pricebtnWithoutNuerphicm('1200', '')
+        ],
+      ),
+    );
+  }
+
+  Widget BookingInfowithUSd(String title, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 13,
+        right: 13,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          getTtile(title, 12, FontWeight.w400, 'Lab Grotesque'),
+          pricebtnWithoutNuerphicm(value, '')
+        ],
+      ),
+    );
+  }
+
+  Widget BookinginfoRow(String title, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 13,
+        right: 13,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          getTtile(title, 12, FontWeight.w400, 'Lab Grotesque'),
+          getTtile(value, 16, FontWeight.w700, 'Lab Grotesque'),
+        ],
+      ),
+    );
+  }
+
+  Widget paymentMethod(double width) {
+    return neurphicmcontainer(
+        12,
+        Padding(
+          padding: const EdgeInsets.only(
+              top: 15, left: 13, right: 12.24, bottom: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              getTtile('Payment Method', 14, FontWeight.w500, 'Lab Grotesque'),
+              const SizedBox(
+                height: 21,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    height: 56,
+                    width: width / 2.5,
+                    child: neurphicmcontainer(
+                        15,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 18.9,
+                              height: 16.38,
+                              child: Image.asset('assets/images/check.png'),
+                            ),
+                            const SizedBox(
+                              height: 9.62,
+                            ),
+                            getTtile('Credit/Debit Card', 12, FontWeight.w500,
+                                'Lab Grotesque'),
+                          ],
+                        )),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                      height: 56,
+                      child: neurphicmcontainer(
+                          15,
+                          SizedBox(
+                            width: 86.56,
+                            height: 40,
+                            child: Image.asset('assets/images/paypal.png'),
+                          )),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: width / 2.5,
+                    child: neurphicmcontainer(
+                        15,
+                        SizedBox(
+                          width: 75,
+                          height: 47,
+                          child: Image.asset('assets/images/applepay.png'),
+                        )),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: neurphicmcontainer(
+                        15,
+                        SizedBox(
+                          width: 75,
+                          height: 47,
+                          child: Image.asset('assets/images/samsungpay.png'),
+                        )),
+                  )
+                ],
+              )
+            ],
+          ),
         ));
   }
 
@@ -104,7 +397,7 @@ class _BookindDetailsState extends State<BookindDetails> {
                       const SizedBox(
                         width: 5.86,
                       ),
-                      Container(
+                      SizedBox(
                         height: 14,
                         width: 14,
                         child: Image.asset('assets/images/filled.png'),
@@ -128,7 +421,7 @@ class _BookindDetailsState extends State<BookindDetails> {
                 const SizedBox(
                   width: 18,
                 ),
-                pricebtnWithoutNuerphicm('1200')
+                pricebtnWithoutNuerphicm('1200', '/d')
               ],
             )
           ],
@@ -168,8 +461,7 @@ class _BookindDetailsState extends State<BookindDetails> {
                                 width: 24,
                                 height: 24,
                                 alignment: Alignment.center,
-                                child:
-                                    Image.asset('assets/images/documents.png'),
+                                child: Image.asset('assets/images/doc.png'),
                               ),
                               const SizedBox(
                                 width: 8,
@@ -217,8 +509,7 @@ class _BookindDetailsState extends State<BookindDetails> {
                                   width: 24,
                                   height: 24,
                                   alignment: Alignment.center,
-                                  child: Image.asset(
-                                      'assets/images/documents.png'),
+                                  child: Image.asset('assets/images/doc.png'),
                                 ),
                                 const SizedBox(
                                   width: 8,
@@ -255,7 +546,7 @@ class _BookindDetailsState extends State<BookindDetails> {
     );
   }
 
-  Widget bookingDetails() {
+  Widget bookingDate() {
     return neurphicmcontainer(
         9,
         Padding(
@@ -287,7 +578,7 @@ class _BookindDetailsState extends State<BookindDetails> {
                   Container(
                     child: Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 18,
                           height: 18,
                           child: Image.asset(
@@ -306,7 +597,7 @@ class _BookindDetailsState extends State<BookindDetails> {
                   Container(
                     child: Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 18,
                           height: 18,
                           child: Image.asset(
@@ -350,7 +641,7 @@ class _BookindDetailsState extends State<BookindDetails> {
               ),
               Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 19.2,
                     height: 19.2,
                     child: Image.asset('assets/images/tab2.png'),
@@ -506,9 +797,8 @@ class _BookindDetailsState extends State<BookindDetails> {
     );
   }
 
-  Container neurphicmcontainer(double radius, Widget child) {
-    return Container(
-        child: Neumorphic(
+  Neumorphic neurphicmcontainer(double radius, Widget child) {
+    return Neumorphic(
       style: NeumorphicStyle(
           shape: NeumorphicShape.concave,
           lightSource: LightSource.topLeft,
@@ -517,11 +807,11 @@ class _BookindDetailsState extends State<BookindDetails> {
           // shadowLightColor: const Color(0xffFAF9F9),
           color: neumorphicColor),
       child: child,
-    ));
+    );
   }
 
   Widget priceButton(String price) {
-    return Container(
+    return SizedBox(
       height: 31,
       width: 111,
       child: Neumorphic(
@@ -576,7 +866,7 @@ class _BookindDetailsState extends State<BookindDetails> {
     );
   }
 
-  Widget pricebtnWithoutNuerphicm(String price) {
+  Widget pricebtnWithoutNuerphicm(String price, String day) {
     return Container(
       padding: const EdgeInsets.only(left: 5, bottom: 5, top: 5),
       child: Row(
@@ -593,11 +883,11 @@ class _BookindDetailsState extends State<BookindDetails> {
             price,
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
           ),
-          const Align(
+          Align(
             alignment: Alignment.bottomRight,
             child: Text(
-              '/d',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+              day,
+              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
             ),
           )
         ],

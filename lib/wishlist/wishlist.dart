@@ -3,38 +3,24 @@ import 'package:car_rental/widget/gettitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-class Wishlist extends StatefulWidget {
-  const Wishlist({Key? key}) : super(key: key);
+class WidhList extends StatefulWidget {
+  const WidhList({Key? key}) : super(key: key);
 
   @override
-  State<Wishlist> createState() => _WishlistState();
+  State<WidhList> createState() => _WidhListState();
 }
 
-class _WishlistState extends State<Wishlist> {
+class _WidhListState extends State<WidhList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundcolor,
-      appBar: AppBar(
-        backgroundColor: neumorphicColor,
-        centerTitle: true,
-        title: getTtile('Wishlist', 16, FontWeight.w500, 'Lab Grotesque'),
-        leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Container(
-              width: 24,
-              height: 24,
-              margin: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/arrow_back.png'))),
-            )),
-      ),
       body: Padding(
-        padding:
-            const EdgeInsets.only(top: 14, right: 19, left: 19, bottom: 10),
+        padding: const EdgeInsets.only(
+          top: 14,
+          right: 19,
+          left: 19,
+        ),
         child: ListView(
           children: [
             popularRides(
@@ -76,6 +62,9 @@ class _WishlistState extends State<Wishlist> {
                 '296',
                 '1200',
                 'assets/images/dashimg5.png'),
+            const SizedBox(
+              height: 10,
+            )
           ],
         ),
       ),

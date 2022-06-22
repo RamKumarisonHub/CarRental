@@ -128,12 +128,12 @@ class _OTPScreenState extends State<OTPScreen> {
                   BoxShadow(
                       // spreadRadius: 0.8,
                       color: Color(0xffFAF9F9),
-                      offset: Offset(-23, -23),
-                      blurRadius: 40),
+                      offset: Offset(-28, -28),
+                      blurRadius: 30),
                   BoxShadow(
                       spreadRadius: 0.8,
                       color: Color(0xffD9D5D5),
-                      offset: Offset(23, 23),
+                      offset: Offset(28, 28),
                       blurRadius: 30)
                 ],
                 // pastedTextStyle: const TextStyle(

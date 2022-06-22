@@ -61,7 +61,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   const SizedBox(
                     height: 11,
                   ),
-                  textfield(context, 'x x x x x'),
+                  textfield(context, 'x x x x x', false),
                   const SizedBox(
                     height: 23,
                   ),
@@ -70,7 +70,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   const SizedBox(
                     height: 11,
                   ),
-                  textfield(context, 'x x x x x'),
+                  textfield(context, 'x x x x x', false),
                   const SizedBox(
                     height: 23,
                   ),
@@ -79,7 +79,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   const SizedBox(
                     height: 11,
                   ),
-                  textfield(context, 'x x x x x'),
+                  textfield(context, 'x x x x x', false),
                   const SizedBox(
                     height: 51,
                   ),

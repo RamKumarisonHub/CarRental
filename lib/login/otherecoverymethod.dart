@@ -77,15 +77,9 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
   Widget otheRecoveryWidget(double width) {
     return Container(
       width: width,
-      child: Neumorphic(
-        style: NeumorphicStyle(
-            shape: NeumorphicShape.concave,
-            lightSource: LightSource.topLeft,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-            intensity: 1,
-            shadowLightColor: const Color(0xffFAF9F9),
-            color: neumorphicColor),
-        child: Padding(
+      child: neurphicmcontainer(
+        25,
+        Padding(
           padding:
               const EdgeInsets.only(top: 26, left: 24, right: 25, bottom: 34),
           child: Column(
@@ -111,7 +105,7 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
               const SizedBox(
                 height: 11,
               ),
-              textfield(context, ''),
+              textfield(context, '0123456789', false),
               const SizedBox(
                 height: 27,
               ),
@@ -133,14 +127,9 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
                 child: Container(
                   height: 55,
                   width: width,
-                  child: Neumorphic(
-                    style: NeumorphicStyle(
-                        color: neumorphicColor,
-                        boxShape: NeumorphicBoxShape.roundRect(
-                            BorderRadius.circular(27.5)),
-                        intensity: 12,
-                        depth: NeumorphicTheme.depth(context)),
-                    child: Align(
+                  child: neurphicmcontainer(
+                    27.5,
+                    Align(
                         alignment: Alignment.center,
                         child: getTtile(
                             'Send OTP', 14, FontWeight.w500, 'Lab Grotesque')),
@@ -151,6 +140,18 @@ class _OtherecoveryMethodState extends State<OtherecoveryMethod> {
           ),
         ),
       ),
+    );
+  }
+
+  Neumorphic neurphicmcontainer(double radius, Widget child) {
+    return Neumorphic(
+      style: NeumorphicStyle(
+          lightSource: LightSource.topLeft,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(radius)),
+          intensity: 1,
+          depth: NeumorphicTheme.depth(context),
+          color: neumorphicColor),
+      child: child,
     );
   }
 }

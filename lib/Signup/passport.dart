@@ -10,8 +10,8 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import '../widget/textfield.dart';
 
 class Passport extends StatefulWidget {
-  final String routesString;
-  Passport(this.routesString);
+  final String routesString1;
+  Passport(this.routesString1);
 
   @override
   State<Passport> createState() => _PassportState();
@@ -42,7 +42,7 @@ class _PassportState extends State<Passport> {
             )),
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 16, right: 20, top: 18),
+        padding: const EdgeInsets.only(left: 16, right: 20, top: 18),
         child: ListView(
           children: [
             Neumorphic(
@@ -78,7 +78,8 @@ class _PassportState extends State<Passport> {
                               ),
                               Container(
                                   width: width / 2.5,
-                                  child: textfield(context, 'Aliexis enache')),
+                                  child: textfield(
+                                      context, 'Aliexis enache', false)),
                             ],
                           ),
                           const SizedBox(
@@ -95,8 +96,8 @@ class _PassportState extends State<Passport> {
                                 ),
                                 Container(
                                     width: width / 2,
-                                    child:
-                                        textfield(context, 'Aliexis enache')),
+                                    child: textfield(
+                                        context, 'Aliexis enache', false)),
                               ],
                             ),
                           )
@@ -110,7 +111,7 @@ class _PassportState extends State<Passport> {
                     const SizedBox(
                       height: 3,
                     ),
-                    textfield(context, 'Country'),
+                    textfield(context, 'Country', false),
                     const SizedBox(
                       height: 9,
                     ),
@@ -119,7 +120,7 @@ class _PassportState extends State<Passport> {
                     const SizedBox(
                       height: 3,
                     ),
-                    textfield(context, 'Passport Number'),
+                    textfield(context, 'Passport Number', false),
                     const SizedBox(
                       height: 9,
                     ),
@@ -128,7 +129,7 @@ class _PassportState extends State<Passport> {
                     const SizedBox(
                       height: 9,
                     ),
-                    textfield(context, 'Expiry Date'),
+                    textfield(context, 'Expiry Date', false),
                     const SizedBox(
                       height: 19,
                     ),
@@ -156,7 +157,7 @@ class _PassportState extends State<Passport> {
             const SizedBox(
               height: 25,
             ),
-            widget.routesString == 'selectdatetime' ? Container() : Skip(),
+            widget.routesString1 == 'selectdatetime' ? Container() : Skip(),
             const SizedBox(
               height: 46,
             )
@@ -180,11 +181,13 @@ class _PassportState extends State<Passport> {
   Widget Submit() {
     return InkWell(
       onTap: () {
-        widget.routesString == 'selectdatetime'
+        widget.routesString1 == 'selectdatetime'
             ? Navigator.push(context,
-                MaterialPageRoute(builder: (context) => BookindDetails()))
-            : Navigator.push(context,
-                MaterialPageRoute(builder: (context) => PassPortDocument()));
+                MaterialPageRoute(builder: (context) => const BookindDetails()))
+            : Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PassPortDocument()));
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 27, right: 24),

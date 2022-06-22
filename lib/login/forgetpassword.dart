@@ -74,15 +74,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   Widget forgotWidget(double width) {
     return Container(
       width: width,
-      child: Neumorphic(
-        style: NeumorphicStyle(
-            shape: NeumorphicShape.concave,
-            lightSource: LightSource.topLeft,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-            intensity: 1,
-            shadowLightColor: const Color(0xffFAF9F9),
-            color: neumorphicColor),
-        child: Padding(
+      child: neurphicmcontainer(
+        25,
+        Padding(
           padding:
               const EdgeInsets.only(top: 31, left: 24, right: 25, bottom: 54),
           child: Column(
@@ -100,21 +94,16 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               const SizedBox(
                 height: 11,
               ),
-              textfield(context, ''),
+              textfield(context, 'jhondeo@gmail.com', false),
               const SizedBox(
                 height: 37,
               ),
               Container(
                 height: 55,
                 width: width,
-                child: Neumorphic(
-                  style: NeumorphicStyle(
-                      color: neumorphicColor,
-                      boxShape: NeumorphicBoxShape.roundRect(
-                          BorderRadius.circular(27)),
-                      intensity: 12,
-                      depth: NeumorphicTheme.depth(context)),
-                  child: Align(
+                child: neurphicmcontainer(
+                  27,
+                  Align(
                       alignment: Alignment.center,
                       child: getTtile(
                           'Submit', 14, FontWeight.w500, 'Lab Grotesque')),
@@ -130,7 +119,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => OtherecoveryMethod()));
+                                builder: (context) =>
+                                    const OtherecoveryMethod()));
                       },
                       child: getTtile('Other recovery methods', 14,
                           FontWeight.w500, 'Lab Grotesque'))),
@@ -152,6 +142,18 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           ),
         ),
       ),
+    );
+  }
+
+  Neumorphic neurphicmcontainer(double radius, Widget child) {
+    return Neumorphic(
+      style: NeumorphicStyle(
+          lightSource: LightSource.topLeft,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(radius)),
+          intensity: 1,
+          depth: NeumorphicTheme.depth(context),
+          color: neumorphicColor),
+      child: child,
     );
   }
 }

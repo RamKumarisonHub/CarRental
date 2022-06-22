@@ -30,7 +30,7 @@ class _ProfileState extends State<Profile> {
               const SizedBox(
                 height: 94,
               ),
-              textfield(context, 'Enter Email id'),
+              textfield(context, 'Enter Email id', false),
               const SizedBox(
                 height: 22,
               ),

@@ -2,10 +2,13 @@ import 'package:car_rental/Account/profile.dart';
 import 'package:car_rental/Dashboard/aboutus.dart';
 import 'package:car_rental/Dashboard/documents.dart';
 import 'package:car_rental/Dashboard/legal.dart';
-import 'package:car_rental/Dashboard/wishlish.dart';
+import 'package:car_rental/Dashboard/wishlishSidebar.dart';
 import 'package:car_rental/Home/homescreen.dart';
+import 'package:car_rental/places/place.dart';
+import 'package:car_rental/rides/rides.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/gettitle.dart';
+import 'package:car_rental/wishlist/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:car_rental/Dashboard/notification.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -27,11 +30,11 @@ class _DashboardState extends State<Dashboard> {
   }
 
   List dashboardlist = [
-    HomeScreen(),
-    Text("data1"),
-    Text("data2"),
-    Text("data3"),
-    Profile()
+    const HomeScreen(),
+    const PlaceScreen(),
+    const Rides(),
+    const WidhList(),
+    const Profile()
   ];
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -40,6 +43,20 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
         key: scaffoldKey,
         appBar: AppBar(
+          centerTitle: true,
+          title: getTtile(
+              _selectedIndex == 0
+                  ? 'Home'
+                  : _selectedIndex == 1
+                      ? "Place"
+                      : _selectedIndex == 2
+                          ? 'Rides'
+                          : _selectedIndex == 3
+                              ? 'Wishlist'
+                              : 'Profile',
+              16,
+              FontWeight.w500,
+              'Lab Grotesque'),
           backgroundColor: neumorphicColor,
           leading: InkWell(
             onTap: () {
@@ -164,8 +181,10 @@ class _DashboardState extends State<Dashboard> {
             ),
             GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Wishlist()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => WishlistSideBar()));
                 },
                 child: drawerfieds('assets/images/bottom4.png', 'Wishlist')),
             const SizedBox(

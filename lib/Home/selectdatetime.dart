@@ -74,7 +74,7 @@ class _SelectDateTimeState extends State<SelectDateTime> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => DrivingLicence("selectdatetime")));
+                builder: (context) => DrivingLicence("selectdatetime", '')));
       },
       child: Container(
         height: 55,
@@ -122,10 +122,10 @@ class _SelectDateTimeState extends State<SelectDateTime> {
                       Container(
                           width: width / 2.5,
                           child: InkWell(
-                              onTap: () {
-                                pickDate();
-                              },
-                              child: datetimeTextField(startController))),
+                              onTap: () {},
+                              child: datetimeTextField(startController, () {
+                                pickDate(context);
+                              }))),
                     ],
                   ),
                   const SizedBox(
@@ -142,7 +142,7 @@ class _SelectDateTimeState extends State<SelectDateTime> {
                         ),
                         Container(
                             width: width / 2,
-                            child: datetimeTextField(endController)),
+                            child: datetimeTextField(endController, () {})),
                       ],
                     ),
                   )
@@ -165,7 +165,7 @@ class _SelectDateTimeState extends State<SelectDateTime> {
                   Flexible(
                     child: Container(
                       width: width / 2,
-                      child: datetimeTextField(pickUpController),
+                      child: datetimeTextField(pickUpController, () {}),
                     ),
                   )
                 ],
@@ -296,7 +296,7 @@ class _SelectDateTimeState extends State<SelectDateTime> {
                     const SizedBox(
                       height: 7,
                     ),
-                    textfield(context, 'Complete Address'),
+                    textfield(context, 'Complete Address', false),
                     const SizedBox(
                       height: 17,
                     ),
@@ -305,7 +305,7 @@ class _SelectDateTimeState extends State<SelectDateTime> {
                     const SizedBox(
                       height: 7,
                     ),
-                    textfield(context, 'Complete Address'),
+                    textfield(context, 'Complete Address', false),
                   ],
                 ),
               ))
@@ -399,7 +399,7 @@ class _SelectDateTimeState extends State<SelectDateTime> {
     );
   }
 
-  Widget datetimeTextField(TextEditingController controller) {
+  Widget datetimeTextField(TextEditingController controller, Function() onTap) {
     return Neumorphic(
       margin: const EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
       style: NeumorphicStyle(
@@ -412,6 +412,8 @@ class _SelectDateTimeState extends State<SelectDateTime> {
         alignment: Alignment.center,
         height: 48,
         child: TextFormField(
+          onTap: onTap,
+          readOnly: true,
           controller: controller,
           autofocus: false,
           cursorColor: Colors.black,
@@ -444,13 +446,17 @@ class _SelectDateTimeState extends State<SelectDateTime> {
     }
   }
 
-  pickDate() async {
+  pickDate(BuildContext context) async {
     final intialDate = DateTime.now();
     final newDate = await showDatePicker(
         context: context,
         initialDate: intialDate,
         firstDate: DateTime(DateTime.now().year - 15),
-        lastDate: DateTime(DateTime.now().year + 5));
+        lastDate: DateTime(DateTime.now().year + 5),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+              data: ThemeData(accentColor: Colors.black), child: child!);
+        });
     if (newDate != null) {
       setState(() {
         date = newDate;

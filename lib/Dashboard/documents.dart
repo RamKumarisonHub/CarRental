@@ -43,7 +43,8 @@ class _DocumentsState extends State<Documents> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DrivingLicence('documents')));
+                          builder: (context) =>
+                              DrivingLicence('documents', '')));
                 },
                 child: documentsWidget('Driving License')),
             const SizedBox(

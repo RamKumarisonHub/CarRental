@@ -123,7 +123,8 @@ class _EditAccountState extends State<EditAccount> {
                           ),
                           Container(
                               width: width / 2.5,
-                              child: textfield(context, 'Aliexis enache')),
+                              child:
+                                  textfield(context, 'Aliexis enache', false)),
                         ],
                       ),
                       const SizedBox(
@@ -140,7 +141,8 @@ class _EditAccountState extends State<EditAccount> {
                             ),
                             Container(
                                 width: width / 2,
-                                child: textfield(context, 'Aliexis enache')),
+                                child: textfield(
+                                    context, 'Aliexis enache', false)),
                           ],
                         ),
                       )
@@ -154,7 +156,7 @@ class _EditAccountState extends State<EditAccount> {
                 const SizedBox(
                   height: 11,
                 ),
-                textfield(context, 'aliexisenache02@gmail.com'),
+                textfield(context, 'aliexisenache02@gmail.com', false),
                 const SizedBox(
                   height: 23,
                 ),
@@ -162,7 +164,7 @@ class _EditAccountState extends State<EditAccount> {
                 const SizedBox(
                   height: 11,
                 ),
-                textfield(context, '0123456789'),
+                textfield(context, '0123456789', false),
                 const SizedBox(
                   height: 23,
                 ),
@@ -170,7 +172,7 @@ class _EditAccountState extends State<EditAccount> {
                 const SizedBox(
                   height: 11,
                 ),
-                textfield(context, ''),
+                textfield(context, '', false),
                 const SizedBox(
                   height: 23,
                 ),
@@ -218,26 +220,27 @@ class _EditAccountState extends State<EditAccount> {
       style: NeumorphicStyle(
           color: neumorphicColor,
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-          intensity: 12,
+          intensity: 1,
           depth: NeumorphicTheme.embossDepth(context)),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       child: Container(
-        alignment: Alignment.center,
         height: 55,
+        alignment: Alignment.center,
         child: TextFormField(
           autofocus: false,
           cursorColor: Colors.black,
           style: const TextStyle(
               fontSize: 12, color: black, fontWeight: FontWeight.w500),
           decoration: InputDecoration(
-              prefixIcon:Container(
-                  width: 5.5,
-                  height: 16.5,
+              contentPadding: const EdgeInsets.only(top: 15),
+              prefixIcon: Container(
+                width: 16,
+                height: 12,
                 alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/country.png',
-                  width: 5.5,
-                  height: 16.5,
+                  width: 16,
+                  height: 12,
                 ),
               ),
               hintText: 'United Arab Emirates',
@@ -249,6 +252,7 @@ class _EditAccountState extends State<EditAccount> {
 
   selectphotoDialogbox() {
     return showModalBottomSheet(
+        backgroundColor: backgroundcolor,
         shape: const RoundedRectangleBorder(
             // <-- SEE HERE
             borderRadius: BorderRadius.vertical(

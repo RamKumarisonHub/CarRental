@@ -1,6 +1,7 @@
 import 'package:car_rental/Home/filter.dart';
 import 'package:car_rental/Home/searchbar.dart';
 import 'package:car_rental/Home/selectdatetime.dart';
+import 'package:car_rental/Home/viewItem.dart';
 import 'package:car_rental/widget/gettitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -44,10 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SelectDateTime()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Filter()));
                       },
                       child: filterSearchWidget('assets/images/filter.png')),
                   const SizedBox(
@@ -129,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             popularRides(
                 'assets/images/dashimg2.png',
-                'Aston Martin',
+                'Ferrari',
                 'Vantage',
                 '4.2',
                 '2.9',
@@ -155,134 +154,146 @@ class _HomeScreenState extends State<HomeScreen> {
       String speed,
       String price,
       String img2) {
-    return Container(
-      child: Neumorphic(
-        style: NeumorphicStyle(
-            shape: NeumorphicShape.concave,
-            lightSource: LightSource.topLeft,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-            intensity: 1,
-            // shadowLightColor: const Color(0xffFAF9F9),
-            color: neumorphicColor),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 18, top: 14),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          child: Image.asset(
-                            img1,
-                            width: 76,
-                            height: 43,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ViewItem(img1, title1, title1, rating,
+                    timer, miles, exhaust, speed, price, img2)));
+      },
+      child: Container(
+        child: Neumorphic(
+          style: NeumorphicStyle(
+              shape: NeumorphicShape.concave,
+              lightSource: LightSource.topLeft,
+              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
+              intensity: 1,
+              // shadowLightColor: const Color(0xffFAF9F9),
+              color: neumorphicColor),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 18, top: 14),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Image.asset(
+                              img1,
+                              width: 76,
+                              height: 43,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            getTtile(
-                                title1, 11.5, FontWeight.w400, 'Lab Grotesque'),
-                            getTtile(
-                                title2, 24.5, FontWeight.w700, 'Lab Grotesque')
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.star_border_purple500_outlined,
-                          size: 15,
-                          color: black,
-                        ),
-                        const SizedBox(
-                          width: 3.75,
-                        ),
-                        getTtile(
-                            rating, 10.5, FontWeight.w700, 'Lab Grotesque'),
-                        const SizedBox(
-                          width: 18,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              // const SizedBox(height: 25,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          // width: 150,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              getDetials('0-60', 'assets/images/dashimg8.png',
-                                  timer, 'sec'),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              getDetials('1/4 mile',
-                                  'assets/images/dashimg10.png', miles, 'sec'),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              getDetials('Exhaust',
-                                  'assets/images/dashimg9.png', exhaust, 'db')
+                              getTtile(title1, 11.5, FontWeight.w400,
+                                  'Lab Grotesque'),
+                              getTtile(title2, 24.5, FontWeight.w700,
+                                  'Lab Grotesque')
                             ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 13,
-                        ),
-                        Container(
-                          child: Row(
-                            children: [
-                              getDetials('Power', 'assets/images/dashimg6.png',
-                                  '510', 'bhp'),
-                              const SizedBox(
-                                width: 11.85,
-                              ),
-                              getDetials('Speed', 'assets/images/dashimg7.png',
-                                  speed, 'Kmh')
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 29,
-                        ),
-                        priceButton(price)
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      child: Image.asset(
-                        img2,
-                        width: 160,
-                        // height: 180,
+                          )
+                        ],
                       ),
                     ),
-                  )
-                ],
-              ),
-            ],
+                    Container(
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.star_border_purple500_outlined,
+                            size: 15,
+                            color: black,
+                          ),
+                          const SizedBox(
+                            width: 3.75,
+                          ),
+                          getTtile(
+                              rating, 10.5, FontWeight.w700, 'Lab Grotesque'),
+                          const SizedBox(
+                            width: 18,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                // const SizedBox(height: 25,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            // width: 150,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                getDetials('0-60', 'assets/images/dashimg8.png',
+                                    timer, 'sec'),
+                                const SizedBox(
+                                  width: 15,
+                                ),
+                                getDetials(
+                                    '1/4 mile',
+                                    'assets/images/dashimg10.png',
+                                    miles,
+                                    'sec'),
+                                const SizedBox(
+                                  width: 15,
+                                ),
+                                getDetials('Exhaust',
+                                    'assets/images/dashimg9.png', exhaust, 'db')
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 13,
+                          ),
+                          Container(
+                            child: Row(
+                              children: [
+                                getDetials('Power',
+                                    'assets/images/dashimg6.png', '510', 'bhp'),
+                                const SizedBox(
+                                  width: 11.85,
+                                ),
+                                getDetials('Speed',
+                                    'assets/images/dashimg7.png', speed, 'Kmh')
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 29,
+                          ),
+                          priceButton(price)
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: Image.asset(
+                          img2,
+                          width: 160,
+                          // height: 180,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -386,10 +397,15 @@ class _HomeScreenState extends State<HomeScreen> {
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
             intensity: 1,
             depth: NeumorphicTheme.depth(context)),
-        child: Image.asset(
-          img,
+        child: Container(
+          alignment: Alignment.center,
           width: 24,
           height: 24,
+          child: Image.asset(
+            img,
+            width: 24,
+            height: 24,
+          ),
         ),
       ),
     );

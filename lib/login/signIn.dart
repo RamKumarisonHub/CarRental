@@ -1,5 +1,6 @@
 import 'package:car_rental/Signup/signup.dart';
 import 'package:car_rental/login/forgetpassword.dart';
+import 'package:car_rental/login/otpscreen.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/bottomimg.dart';
 import 'package:car_rental/widget/gettitle.dart';
@@ -101,15 +102,9 @@ class _SignInState extends State<SignIn> {
   Widget logInwidget(double width) {
     return Container(
       width: width,
-      child: Neumorphic(
-        style: NeumorphicStyle(
-            shape: NeumorphicShape.concave,
-            lightSource: LightSource.topLeft,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-            intensity: 1,
-            // shadowLightColor: const Color(0xffFAF9F9),
-            color: neumorphicColor),
-        child: Padding(
+      child: neurphicmcontainer(
+        25,
+        Padding(
           padding:
               const EdgeInsets.only(top: 24, left: 24, right: 25, bottom: 24),
           child: Column(
@@ -127,7 +122,7 @@ class _SignInState extends State<SignIn> {
               const SizedBox(
                 height: 11,
               ),
-              textfield(context, ''),
+              textfield(context, 'jhonedeo@gmail.com', false),
               const SizedBox(
                 height: 23,
               ),
@@ -174,7 +169,7 @@ class _SignInState extends State<SignIn> {
                           },
                           child: Container(
                             margin: const EdgeInsets.only(
-                                top: 2, bottom: 6, right: 0),
+                                top: 2, bottom: 2, right: 0),
                             width: 41,
                             height: 41,
                             child: Neumorphic(
@@ -200,20 +195,21 @@ class _SignInState extends State<SignIn> {
               const SizedBox(
                 height: 38,
               ),
-              Container(
-                height: 55,
-                width: width,
-                child: Neumorphic(
-                  style: NeumorphicStyle(
-                      color: neumorphicColor,
-                      boxShape: NeumorphicBoxShape.roundRect(
-                          BorderRadius.circular(27)),
-                      intensity: 12,
-                      depth: NeumorphicTheme.depth(context)),
-                  child: Align(
-                      alignment: Alignment.center,
-                      child: getTtile(
-                          'Log In', 14, FontWeight.w500, 'Lab Grotesque')),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OTPScreen()));
+                },
+                child: Container(
+                  height: 55,
+                  width: width,
+                  child: neurphicmcontainer(
+                    27,
+                    Align(
+                        alignment: Alignment.center,
+                        child: getTtile(
+                            'Log In', 14, FontWeight.w500, 'Lab Grotesque')),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -253,14 +249,9 @@ class _SignInState extends State<SignIn> {
   Widget typesofLogin(double width) {
     return Container(
       width: width,
-      child: Neumorphic(
-          style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(25)),
-              // lightSource: LightSource.topLeft,
-              intensity: 1,
-              color: neumorphicColor),
-          child: Padding(
+      child: neurphicmcontainer(
+          25,
+          Padding(
             padding: const EdgeInsets.only(top: 21, bottom: 19),
             child: Column(
               children: [
@@ -278,34 +269,33 @@ class _SignInState extends State<SignIn> {
                     Container(
                       height: 55,
                       width: 135.5,
-                      child: Neumorphic(
-                          style: NeumorphicStyle(
-                              // lightSource: LightSource.topLeft,
-                              color: const Color(0xffE5E5E5),
-                              boxShape: NeumorphicBoxShape.roundRect(
-                                  BorderRadius.circular(27.5)),
-                              intensity: 0.94,
-                              depth: NeumorphicTheme.depth(context)),
-                          child: Image.asset('assets/images/Google.png')),
+                      child: neurphicmcontainer(
+                          27.5, Image.asset('assets/images/Google.png')),
                     ),
                     Container(
                       height: 55,
                       width: 135.5,
-                      child: Neumorphic(
-                          style: NeumorphicStyle(
-                              // lightSource: LightSource.topLeft,
-                              color: const Color(0xffE5E5E5),
-                              boxShape: NeumorphicBoxShape.roundRect(
-                                  BorderRadius.circular(27.5)),
-                              intensity: 0.94,
-                              depth: NeumorphicTheme.depth(context)),
-                          child: Image.asset('assets/images/instra.png')),
+                      child: neurphicmcontainer(
+                          27.5, Image.asset('assets/images/instra.png')),
                     )
                   ],
                 )
               ],
             ),
           )),
+    );
+  }
+
+  Neumorphic neurphicmcontainer(double radius, Widget child) {
+    return Neumorphic(
+      style: NeumorphicStyle(
+          lightSource: LightSource.topLeft,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(radius)),
+          intensity: 1,
+          depth: NeumorphicTheme.depth(context),
+          // shadowLightColor: const Color(0xffFAF9F9),
+          color: neumorphicColor),
+      child: child,
     );
   }
 }

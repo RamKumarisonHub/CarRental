@@ -2,10 +2,7 @@ import 'package:car_rental/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-Widget textfield(
-  BuildContext context,
-  String hintText,
-) {
+Widget textfield(BuildContext context, String hintText, bool readOnly) {
   return Neumorphic(
     margin: const EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
     style: NeumorphicStyle(
@@ -18,12 +15,22 @@ Widget textfield(
       alignment: Alignment.center,
       height: 55,
       child: TextFormField(
+        readOnly: readOnly,
         autofocus: false,
         cursorColor: Colors.black,
         style: const TextStyle(
-            fontSize: 12, color: black, fontWeight: FontWeight.w500),
-        decoration:
-            InputDecoration(hintText: hintText, border: InputBorder.none),
+            fontFamily: 'Poppins',
+            fontSize: 12,
+            color: black,
+            fontWeight: FontWeight.w500),
+        decoration: InputDecoration(
+            hintStyle: const TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 12,
+                color: black,
+                fontWeight: FontWeight.w400),
+            hintText: hintText,
+            border: InputBorder.none),
       ),
     ),
   );

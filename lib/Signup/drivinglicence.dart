@@ -8,8 +8,9 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:dotted_border/dotted_border.dart';
 
 class DrivingLicence extends StatefulWidget {
-  final String routesString;
-  DrivingLicence(this.routesString);
+  final String routesString1;
+  final String routeString2;
+  DrivingLicence(this.routesString1, this.routeString2);
   @override
   State<DrivingLicence> createState() => _DrivingLicenceState();
 }
@@ -76,7 +77,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                               ),
                               Container(
                                   width: width / 2.5,
-                                  child: textfield(context, 'Aliexis enache')),
+                                  child: textfield(
+                                      context, 'Aliexis enache', false)),
                             ],
                           ),
                           const SizedBox(
@@ -93,8 +95,8 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                                 ),
                                 Container(
                                     width: width / 2,
-                                    child:
-                                        textfield(context, 'Aliexis enache')),
+                                    child: textfield(
+                                        context, 'Aliexis enache', false)),
                               ],
                             ),
                           )
@@ -109,7 +111,7 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                     const SizedBox(
                       height: 3,
                     ),
-                    textfield(context, 'Driving License Number'),
+                    textfield(context, 'Driving License Number', false),
                     const SizedBox(
                       height: 9,
                     ),
@@ -118,7 +120,7 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                     const SizedBox(
                       height: 9,
                     ),
-                    textfield(context, 'Driving License Number'),
+                    textfield(context, 'Driving License Number', false),
                     const SizedBox(
                       height: 9,
                     ),
@@ -165,7 +167,7 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                     const SizedBox(
                       height: 3,
                     ),
-                    textfield(context, 'Driving License Number')
+                    textfield(context, 'Driving License Number', false)
                   ],
                 ),
               ),
@@ -199,15 +201,18 @@ class _DrivingLicenceState extends State<DrivingLicence> {
   Widget verify() {
     return GestureDetector(
       onTap: () {
-        widget.routesString == 'selectdatetime'
+        widget.routesString1 == 'selectdatetime'
             ? Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => Passport('selectdatetime')))
-            : Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => DrivingLicenseDocuments()));
+            : widget.routeString2 == 'signup'
+                ? Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Passport('')))
+                : Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DrivingLicenseDocuments()));
         // Passport
       },
       child: Padding(
@@ -260,7 +265,7 @@ class _DrivingLicenceState extends State<DrivingLicence> {
                           children: [
                             getTtile(
                                 '62%', 12, FontWeight.w400, 'Lab Grotesque'),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
                             getTtile('12 Second Remaining', 12, FontWeight.w400,
@@ -297,41 +302,44 @@ class _DrivingLicenceState extends State<DrivingLicence> {
 
   Widget uploadDrivingLicense() {
     return Container(
-      height: 200,
       child: Neumorphic(
         style: NeumorphicStyle(
             color: neumorphicColor,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
             intensity: 1,
             depth: NeumorphicTheme.embossDepth(context)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 78,
-              width: 78,
-              child: DottedBorder(
-                  borderType: BorderType.RRect,
-                  radius: const Radius.circular(50),
-                  padding: const EdgeInsets.all(6),
-                  color: Color(0xff9C9B9B),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(22)),
-                    child: Container(
-                        alignment: Alignment.center,
-                        child: Image.asset(
-                          'assets/images/addicon.png',
-                          width: 29.9,
-                          height: 29.9,
-                        )),
-                  )),
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-            getTtile('Click a Photo / Upload From Gallery', 12, FontWeight.w500,
-                'Lab Grotesque'),
-          ],
+        child: Container(
+          height: 200,
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 78,
+                width: 78,
+                child: DottedBorder(
+                    borderType: BorderType.RRect,
+                    radius: const Radius.circular(50),
+                    padding: const EdgeInsets.all(6),
+                    color: Color(0xff9C9B9B),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(22)),
+                      child: Container(
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            'assets/images/addicon.png',
+                            width: 29.9,
+                            height: 29.9,
+                          )),
+                    )),
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              getTtile('Click a Photo / Upload From Gallery', 12,
+                  FontWeight.w500, 'Lab Grotesque'),
+            ],
+          ),
         ),
       ),
     );
@@ -343,26 +351,27 @@ class _DrivingLicenceState extends State<DrivingLicence> {
       style: NeumorphicStyle(
           color: neumorphicColor,
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-          intensity: 12,
+          intensity: 1,
           depth: NeumorphicTheme.embossDepth(context)),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       child: Container(
-        alignment: Alignment.center,
         height: 55,
+        alignment: Alignment.center,
         child: TextFormField(
           autofocus: false,
           cursorColor: Colors.black,
           style: const TextStyle(
               fontSize: 12, color: black, fontWeight: FontWeight.w500),
           decoration: InputDecoration(
+              contentPadding: const EdgeInsets.only(top: 17),
               prefixIcon: Container(
-                width: 5.5,
-                height: 16.5,
+                width: 16,
+                height: 12,
                 alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/country.png',
-                  width: 5.5,
-                  height: 16.5,
+                  width: 16,
+                  height: 12,
                 ),
               ),
               hintText: 'United Arab Emirates',

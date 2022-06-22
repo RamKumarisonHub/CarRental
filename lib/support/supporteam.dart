@@ -1,10 +1,10 @@
+import 'package:car_rental/modal/chatmodal.dart';
 import 'package:car_rental/utils/constants.dart';
 import 'package:car_rental/widget/gettitle.dart';
+import 'package:custom_clippers/custom_clippers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'chatdata.dart';
 
 class SupportTeam extends StatefulWidget {
   const SupportTeam({Key? key}) : super(key: key);
@@ -19,6 +19,7 @@ class _SupportTeamState extends State<SupportTeam> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: backgroundcolor,
       appBar: AppBar(
         backgroundColor: neumorphicColor,
         title: getTtile('Support Team', 18, FontWeight.w500, 'Lab Grotesque'),
@@ -38,53 +39,56 @@ class _SupportTeamState extends State<SupportTeam> {
         child: Stack(
           children: [
             ListView.builder(
-              itemCount: messages.length,
+              itemCount: chatMessage.length,
               shrinkWrap: true,
               padding: const EdgeInsets.only(top: 10, bottom: 10),
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                return Container(
-                  padding: const EdgeInsets.only(
-                      left: 14, right: 14, top: 10, bottom: 10),
+                return Padding(
+                  padding: const EdgeInsets.only(left: 16),
                   child: Row(
                     children: [
-                      Neumorphic(
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(
-                                BorderRadius.circular(12)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.grey),
-                        child: Icon(Icons.account_balance),
-                      )
+                      neurphicmcontainer(
+                          50,
+                          Image.asset(
+                            chatMessage[index]['img'],
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          )),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            boxShadow: const [
+                              // BoxShadow(
+                              //   color: Colors.white70,
+                              //   blurRadius: 90.0,
+                              //   offset: Offset(-18, 8),
+                              // ),
+                            ]),
+                        child: ClipPath(
+                          clipper: UpperNipMessageClipper(MessageType.RECEIVE),
+                          child: Container(
+                            width: 230,
+                            height: 48,
+                            child: neurphicmcontainer(
+                              10,
+                              const Align(
+                                  alignment: Alignment.center,
+                                  child: Text("data")),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 );
-                //   Container(
-                //   padding: EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
-                //   child: Neumorphic(
-                //     child: Align(
-                //       alignment: (messages[index].messageType == "receiver"?Alignment.topLeft:Alignment.topRight),
-                //       child: Container(
-                //         decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(20),
-                //           color: (messages[index].messageType  == "receiver"?Colors.grey.shade200:Colors.blue[200]),
-                //         ),
-                //         padding: EdgeInsets.all(16),
-                //         child: Text(messages[index].messageContent, style: TextStyle(fontSize: 15),),
-                //       ),
-                //     ),
-                //   ),
-                // );
               },
             ),
             typemsgField(),
-            // Container(
-            //   height: height,
-            //   width: width,
-            //   color: Colors.red,
-            // )
           ],
         ),
       ),
@@ -103,8 +107,8 @@ class _SupportTeamState extends State<SupportTeam> {
             style: NeumorphicStyle(
                 color: neumorphicColor,
                 boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-                intensity: 12,
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                intensity: 11,
                 depth: NeumorphicTheme.depth(context)),
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
             child: TextFormField(
@@ -127,6 +131,19 @@ class _SupportTeamState extends State<SupportTeam> {
           ),
         ),
       ),
+    );
+  }
+
+  Neumorphic neurphicmcontainer(double radius, Widget child) {
+    return Neumorphic(
+      style: NeumorphicStyle(
+          shape: NeumorphicShape.concave,
+          lightSource: LightSource.topLeft,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(radius)),
+          intensity: 1,
+          depth: NeumorphicTheme.depth(context),
+          color: neumorphicColor),
+      child: child,
     );
   }
 }
